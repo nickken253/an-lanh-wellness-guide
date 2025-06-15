@@ -7,13 +7,13 @@
 
 @layer base {
   :root {
-    --background: 61 93% 91%; /* organic-yellow-cream */
+    --background: 0 0% 100%; /* white */
     --foreground: 90 20% 15%; /* Dark, earthy green */
 
-    --card: 61 93% 94%; /* Slightly brighter cream */
+    --card: 0 0% 98%; /* Light gray */
     --card-foreground: 90 20% 15%;
 
-    --popover: 61 93% 94%;
+    --popover: 0 0% 98%;
     --popover-foreground: 90 20% 15%;
 
     --primary: 88 52% 42%; /* organic-green */
@@ -22,7 +22,7 @@
     --secondary: 85 38% 65%; /* organic-green-light, adjusted for softness */
     --secondary-foreground: 90 20% 15%;
 
-    --muted: 55 70% 88%; /* organic-yellow-soft */
+    --muted: 85 15% 88%; /* Softer muted green */
     --muted-foreground: 90 15% 40%;
 
     --accent: 45 91% 57%; /* organic-yellow */
@@ -31,8 +31,8 @@
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 85 30% 85%; /* Soft green border */
-    --input: 85 30% 85%;
+    --border: 85 20% 88%; /* Soft green border */
+    --input: 85 20% 88%;
     --ring: 88 52% 42%;
 
     --radius: 20px;
@@ -80,7 +80,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-sans font-bold;
   }
 }
 

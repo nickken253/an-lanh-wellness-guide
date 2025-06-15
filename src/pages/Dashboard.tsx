@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import BottomNavigation from '@/components/BottomNavigation';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -34,10 +35,10 @@ const Dashboard = () => {
   ];
 
   const recommendations = [
-    { title: 'Yoga thư giãn tối', duration: '20 phút', image: '🌙', type: 'evening' },
-    { title: 'Yoga cho lưng khỏe', duration: '25 phút', image: '🦴', type: 'therapy' },
-    { title: 'Thiền chánh niệm', duration: '10 phút', image: '🧘‍♀️', type: 'meditation' },
-    { title: 'Yoga năng lượng', duration: '30 phút', image: '⚡', type: 'energy' }
+    { title: 'Yoga thư giãn tối', duration: '20 phút', image: '🌙', type: 'evening', imageUrl: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843' },
+    { title: 'Yoga cho lưng khỏe', duration: '25 phút', image: '🦴', type: 'therapy', imageUrl: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86' },
+    { title: 'Thiền chánh niệm', duration: '10 phút', image: '🧘‍♀️', type: 'meditation', imageUrl: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e' },
+    { title: 'Yoga năng lượng', duration: '30 phút', image: '⚡', type: 'energy', imageUrl: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb' }
   ];
 
   const handleStartWorkout = () => {
@@ -49,7 +50,7 @@ const Dashboard = () => {
       <div className="p-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
+          <h1 className="text-2xl font-bold text-foreground mb-2">
             {getGreeting()}, An! 👋
           </h1>
           <p className="text-muted-foreground">Hãy bắt đầu ngày mới với năng lượng tích cực</p>
@@ -78,7 +79,7 @@ const Dashboard = () => {
           <div className="flex items-start space-x-4">
             <div className="text-4xl">{todayWorkout.image}</div>
             <div className="flex-1">
-              <h2 className="text-xl font-serif font-bold text-foreground mb-2">
+              <h2 className="text-xl font-bold text-foreground mb-2">
                 Bài tập cho hôm nay
               </h2>
               <h3 className="text-lg font-semibold text-foreground mb-1">
@@ -104,7 +105,7 @@ const Dashboard = () => {
         {/* Current Challenge */}
         {challenges.map((challenge, index) => (
           <Card key={index} className="p-6 mb-6 rounded-3xl shadow-md">
-            <h2 className="text-lg font-serif font-bold text-foreground mb-3">
+            <h2 className="text-lg font-bold text-foreground mb-3">
               Thử thách đang tham gia
             </h2>
             <div className="flex items-center justify-between mb-3">
@@ -133,19 +134,28 @@ const Dashboard = () => {
 
         {/* Recommendations */}
         <div className="mb-6">
-          <h2 className="text-lg font-serif font-bold text-foreground mb-4">
+          <h2 className="text-lg font-bold text-foreground mb-4">
             Khám phá thêm
           </h2>
           <div className="grid grid-cols-2 gap-4">
             {recommendations.map((item, index) => (
               <Card 
                 key={index} 
-                className="p-4 rounded-2xl shadow-md hover:shadow-lg transition-shadow cursor-pointer active:scale-95"
+                className="rounded-2xl shadow-md hover:shadow-lg transition-shadow cursor-pointer active:scale-95 overflow-hidden flex flex-col"
                 onClick={handleStartWorkout}
               >
-                <div className="text-2xl mb-2">{item.image}</div>
-                <h3 className="font-semibold text-foreground text-sm mb-1">{item.title}</h3>
-                <p className="text-xs text-muted-foreground">⏱️ {item.duration}</p>
+                <AspectRatio ratio={16 / 9}>
+                  <img src={item.imageUrl} alt={item.title} className="object-cover w-full h-full" />
+                </AspectRatio>
+                <div className="p-3 flex-grow">
+                  <div className='flex items-start space-x-2'>
+                    <div className="text-xl mt-0.5">{item.image}</div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-foreground text-sm leading-tight mb-1">{item.title}</h3>
+                      <p className="text-xs text-muted-foreground">⏱️ {item.duration}</p>
+                    </div>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
