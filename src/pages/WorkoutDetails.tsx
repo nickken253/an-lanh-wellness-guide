@@ -128,7 +128,7 @@ const WorkoutDetails = () => {
       </div>
 
       {/* Fixed Start Button */}
-      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-sage-200">
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-sage-200 z-50">
         <Button
           onClick={handleStartWorkout}
           className="w-full gradient-sage text-white font-medium py-3 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
