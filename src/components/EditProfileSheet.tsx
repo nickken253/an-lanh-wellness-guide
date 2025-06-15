@@ -18,7 +18,7 @@ const profileFormSchema = z.object({
   dob: z.string().refine((val) => !isNaN(Date.parse(val)), { message: "Ngày sinh không hợp lệ." }),
 });
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+export type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 interface EditProfileSheetProps {
   children: React.ReactNode;
