@@ -18,21 +18,21 @@ const BottomNavigation = ({ currentTab }: BottomNavigationProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-sage-200 px-4 py-2 safe-area-bottom">
-      <div className="flex justify-around">
+    <div className="fixed bottom-0 left-0 right-0 px-4 py-3 safe-area-bottom z-50">
+      <div className="w-full max-w-md mx-auto glass-effect rounded-2xl shadow-lg shadow-sage-200/50 flex justify-around items-center p-1.5 space-x-1.5">
         {tabs.map((tab) => (
           <Button
             key={tab.id}
             variant="ghost"
             onClick={() => navigate(tab.path)}
-            className={`flex-1 flex flex-col items-center space-y-1 py-3 px-2 rounded-xl transition-colors ${
+            className={`flex-1 flex flex-col items-center justify-center h-14 rounded-xl transition-all duration-300 ${
               currentTab === tab.id
-                ? 'text-sage-700 bg-sage-50'
-                : 'text-sage-400 hover:text-sage-600 hover:bg-sage-50/50'
+                ? 'bg-sage-500 text-ivory-50 shadow-md shadow-sage-500/30'
+                : 'text-sage-500 hover:bg-sage-100/50'
             }`}
           >
             <tab.icon size={20} />
-            <span className="text-xs font-medium">{tab.label}</span>
+            <span className="text-[11px] font-medium mt-1">{tab.label}</span>
           </Button>
         ))}
       </div>
