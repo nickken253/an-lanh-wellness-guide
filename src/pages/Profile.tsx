@@ -49,10 +49,10 @@ const Profile = () => {
         </div>
 
         {/* Profile Card */}
-        <Card className="p-6 mb-6 bg-white shadow-lg">
+        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
           <div className="flex items-center space-x-4 mb-6">
-            <Avatar className="w-16 h-16 bg-sage-500">
-              <AvatarFallback className="text-white text-xl font-bold">
+            <Avatar className="w-16 h-16 bg-ivory-50 shadow-neumorphic-out-sm">
+              <AvatarFallback className="text-sage-500 text-xl font-bold">
                 {user.name.split(' ').map(n => n[0]).join('')}
               </AvatarFallback>
             </Avatar>
@@ -74,9 +74,9 @@ const Profile = () => {
               <span className="text-sage-600">Kinh nghiệm</span>
               <span className="font-semibold text-sage-800">{user.xp}/{user.xpToNext} XP</span>
             </div>
-            <div className="w-full bg-sage-100 rounded-full h-3">
+            <div className="w-full bg-ivory-50 rounded-full h-3 shadow-neumorphic-in-sm p-0.5">
               <div 
-                className="gradient-sage h-3 rounded-full transition-all duration-300"
+                className="bg-sage-400 h-full rounded-full transition-all duration-300"
                 style={{ width: `${xpProgress}%` }}
               ></div>
             </div>
@@ -88,12 +88,12 @@ const Profile = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <Card className="p-4 text-center bg-white shadow-sm">
+          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
             <div className="text-2xl mb-2">📅</div>
             <div className="text-xl font-bold text-sage-800 mb-1">{user.totalSessions}</div>
             <p className="text-xs text-sage-600">Buổi tập</p>
           </Card>
-          <Card className="p-4 text-center bg-white shadow-sm">
+          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
             <div className="text-2xl mb-2">⏰</div>
             <div className="text-xl font-bold text-sage-800 mb-1">{user.totalMinutes}</div>
             <p className="text-xs text-sage-600">Phút tập</p>
@@ -101,17 +101,17 @@ const Profile = () => {
         </div>
 
         {/* Badges Collection */}
-        <Card className="p-6 mb-6 bg-white shadow-sm">
+        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
           <h3 className="font-serif font-bold text-sage-800 mb-4">Bộ sưu tập huy hiệu</h3>
           <div className="grid grid-cols-3 gap-4">
             {badges.map((badge) => (
               <Dialog key={badge.id}>
                 <DialogTrigger asChild>
                   <button
-                    className={`text-center p-3 rounded-xl transition-all cursor-pointer ${
+                    className={`text-center p-3 rounded-2xl transition-all cursor-pointer ${
                       badge.earned
-                        ? 'bg-sage-50 border-2 border-sage-200 hover:bg-sage-100'
-                        : 'bg-gray-50 border-2 border-gray-200 opacity-50'
+                        ? 'bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm'
+                        : 'bg-ivory-50 opacity-60'
                     }`}
                   >
                     <div className="text-4xl mb-2">{badge.icon}</div>
@@ -122,7 +122,7 @@ const Profile = () => {
                     </h4>
                   </button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
+                <DialogContent className="sm:max-w-md bg-ivory-50 shadow-neumorphic-out rounded-3xl border-none">
                   <div className="text-center p-4">
                     <div className="text-6xl mb-4">{badge.icon}</div>
                     <h3 className="text-xl font-serif font-bold text-sage-800 mb-3">{badge.name}</h3>
@@ -144,26 +144,26 @@ const Profile = () => {
         </Card>
 
         {/* Menu Items */}
-        <Card className="p-4 bg-white shadow-sm">
-          <div className="space-y-2">
+        <Card className="p-2 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
+          <div className="space-y-1">
             {menuItems.map((item, index) => (
               <Button
                 key={index}
                 variant="ghost"
                 onClick={item.action}
-                className="w-full justify-start text-left p-4 h-auto hover:bg-sage-50 rounded-xl"
+                className="w-full justify-start text-left p-3 h-auto hover:bg-sage-100/50 rounded-2xl active:shadow-neumorphic-in-sm"
               >
                 <span className="text-xl mr-3">{item.icon}</span>
                 <span className="text-sage-700">{item.label}</span>
               </Button>
             ))}
             
-            <hr className="my-4 border-sage-100" />
+            <hr className="my-2 border-sage-100/50" />
             
             <Button
               variant="ghost"
               onClick={() => navigate('/')}
-              className="w-full justify-start text-left p-4 h-auto hover:bg-red-50 text-red-600 rounded-xl"
+              className="w-full justify-start text-left p-3 h-auto hover:bg-coral-100/50 text-coral-600 rounded-2xl active:shadow-neumorphic-in-sm"
             >
               <span className="text-xl mr-3">🚪</span>
               <span>Đăng xuất</span>

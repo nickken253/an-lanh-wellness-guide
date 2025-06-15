@@ -30,9 +30,9 @@ const WorkoutSetup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black/50 flex items-center justify-center p-3">
-      <Card className="w-full max-w-sm bg-white rounded-xl shadow-xl">
-        <div className="p-4">
+    <div className="min-h-screen bg-black/50 backdrop-blur-sm flex items-center justify-center p-3">
+      <Card className="w-full max-w-sm bg-ivory-50 rounded-3xl shadow-neumorphic-out p-1">
+       <div className="bg-ivory-50 rounded-[22px] p-4">
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-serif font-bold text-sage-800">
@@ -41,7 +41,7 @@ const WorkoutSetup = () => {
             <Button
               variant="ghost"
               onClick={() => navigate(-1)}
-              className="rounded-full p-1.5 h-8 w-8"
+              className="rounded-full p-1.5 h-8 w-8 text-sage-600 bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm"
             >
               <X size={16} />
             </Button>
@@ -57,10 +57,10 @@ const WorkoutSetup = () => {
               {musicOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-2.5 cursor-pointer transition-all duration-200 border-2 ${
+                  className={`p-2.5 cursor-pointer transition-all duration-200 rounded-2xl ${
                     selectedMusic === option.id
-                      ? 'border-sage-500 bg-sage-50'
-                      : 'border-sage-200 hover:border-sage-300'
+                      ? 'shadow-neumorphic-in-sm bg-ivory-50'
+                      : 'shadow-neumorphic-out-sm bg-ivory-50 hover:shadow-md'
                   }`}
                   onClick={() => setSelectedMusic(option.id)}
                 >
@@ -84,10 +84,10 @@ const WorkoutSetup = () => {
               {voiceOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-2.5 cursor-pointer transition-all duration-200 border-2 ${
+                  className={`p-2.5 cursor-pointer transition-all duration-200 rounded-2xl ${
                     selectedVoice === option.id
-                      ? 'border-sage-500 bg-sage-50'
-                      : 'border-sage-200 hover:border-sage-300'
+                      ? 'shadow-neumorphic-in-sm bg-ivory-50'
+                      : 'shadow-neumorphic-out-sm bg-ivory-50 hover:shadow-md'
                   }`}
                   onClick={() => setSelectedVoice(option.id)}
                 >
@@ -103,7 +103,7 @@ const WorkoutSetup = () => {
 
           {/* Skip Warmup Option */}
           <div className="mb-6">
-            <div className="flex items-center justify-between p-3 bg-sage-50 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div>
                 <p className="text-sm font-medium text-sage-800">Bỏ qua phần khởi động</p>
                 <p className="text-xs text-sage-600">Chuyển thẳng vào bài tập chính</p>
@@ -111,6 +111,7 @@ const WorkoutSetup = () => {
               <Switch
                 checked={skipWarmup}
                 onCheckedChange={setSkipWarmup}
+                className="shadow-neumorphic-in-sm data-[state=checked]:bg-sage-500"
               />
             </div>
           </div>
@@ -118,7 +119,8 @@ const WorkoutSetup = () => {
           {/* Start Button */}
           <Button
             onClick={handleStart}
-            className="w-full gradient-sage text-white font-medium py-3 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            variant="ghost"
+            className="w-full bg-sage-500 text-ivory-50 font-medium py-3 text-base rounded-xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
           >
             Sẵn sàng! 🚀
           </Button>

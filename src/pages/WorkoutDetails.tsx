@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -35,13 +34,13 @@ const WorkoutDetails = () => {
     <div className="min-h-screen bg-ivory-50">
       {/* Header */}
       <div className="relative">
-        <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-4 left-4 z-10">
           <Button
             variant="ghost"
             onClick={() => navigate(-1)}
-            className="rounded-full bg-white/80 backdrop-blur-sm shadow-sm h-8 w-8 p-1.5"
+            className="rounded-full bg-ivory-50/80 backdrop-blur-sm shadow-neumorphic-out-sm h-10 w-10 p-2"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={20} />
           </Button>
         </div>
         
@@ -51,9 +50,9 @@ const WorkoutDetails = () => {
         </div>
       </div>
 
-      <div className="p-3 -mt-6 relative z-10">
+      <div className="p-4 -mt-8 relative z-10">
         {/* Main Info Card */}
-        <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
+        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
           <h1 className="text-xl font-serif font-bold text-sage-800 mb-2">
             {workout.title}
           </h1>
@@ -79,14 +78,14 @@ const WorkoutDetails = () => {
         </Card>
 
         {/* Poses List */}
-        <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
+        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
           <h2 className="text-base font-serif font-bold text-sage-800 mb-3">
             Các tư thế trong bài tập
           </h2>
           
           <div className="space-y-2.5">
             {workout.poses.map((pose, index) => (
-              <div key={index} className="flex items-center space-x-3 p-2.5 bg-sage-50 rounded-lg">
+              <div key={index} className="flex items-center space-x-3 p-2.5 bg-ivory-50 rounded-2xl shadow-neumorphic-in-sm">
                 <div className="text-xl">{pose.image}</div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm font-semibold text-sage-800 truncate">{pose.name}</h3>
@@ -101,25 +100,25 @@ const WorkoutDetails = () => {
         </Card>
 
         {/* Benefits */}
-        <Card className="p-4 bg-white shadow-lg rounded-xl mb-20">
+        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-24">
           <h2 className="text-base font-serif font-bold text-sage-800 mb-3">
             Lợi ích của bài tập
           </h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1">💪</div>
               <p className="text-xs font-medium text-sage-800">Tăng sức mạnh</p>
             </div>
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1">🤸‍♀️</div>
               <p className="text-xs font-medium text-sage-800">Cải thiện độ dẻo</p>
             </div>
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1">😌</div>
               <p className="text-xs font-medium text-sage-800">Giảm stress</p>
             </div>
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1">⚡</div>
               <p className="text-xs font-medium text-sage-800">Tăng năng lượng</p>
             </div>
@@ -128,10 +127,11 @@ const WorkoutDetails = () => {
       </div>
 
       {/* Fixed Start Button */}
-      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-sage-200 z-50">
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-ivory-50/80 backdrop-blur-sm border-t border-sage-200/50 z-50">
         <Button
           onClick={handleStartWorkout}
-          className="w-full gradient-sage text-white font-medium py-3 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          variant="ghost"
+          className="w-full bg-sage-500 text-ivory-50 font-medium py-3 text-base rounded-2xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
         >
           <Play size={16} className="mr-2" />
           Bắt đầu tập

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -80,7 +79,7 @@ const History = () => {
           key={date}
           className={`p-2 text-center relative rounded-lg transition-colors ${
             isToday
-              ? 'bg-sage-500 text-white font-bold'
+              ? 'bg-sage-500 text-white font-bold shadow-neumorphic-out-sm'
               : hasWorkout
               ? 'bg-sage-100 text-sage-800 font-semibold'
               : 'text-sage-400 hover:bg-sage-50'
@@ -88,19 +87,19 @@ const History = () => {
         >
           <span className="text-sm">{date}</span>
           {hasWorkout && !isToday && (
-            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-sage-500 rounded-full"></div>
+            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-sage-500 rounded-full"></div>
           )}
         </div>
       );
     }
 
-    return <div className="grid grid-cols-7 gap-1">{days}</div>;
+    return <div className="grid grid-cols-7 gap-2">{days}</div>;
   };
 
   const renderStats = () => (
     <div className="space-y-6 animate-fade-in">
       {/* Weekly Chart */}
-      <Card className="p-4 sm:p-6 bg-white shadow-lg shadow-sage-100/50">
+      <Card className="p-4 sm:p-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
         <h3 className="font-serif font-bold text-sage-800 text-lg mb-1">Tổng quan tuần</h3>
         <p className="text-sm text-sage-600 mb-4">Thời gian tập luyện (phút)</p>
         <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -115,7 +114,7 @@ const History = () => {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel indicator="dot" className="bg-white/80 glass-effect" />}
+              content={<ChartTooltipContent hideLabel indicator="dot" className="bg-ivory-50/80 glass-effect rounded-2xl" />}
             />
             <Bar dataKey="minutes" fill="var(--color-minutes)" radius={[8, 8, 0, 0]} />
           </BarChart>
@@ -124,24 +123,24 @@ const History = () => {
 
       {/* Streak Stats */}
       <div className="grid grid-cols-2 gap-4">
-        <Card className="p-4 text-white gradient-coral shadow-lg shadow-coral-500/30">
+        <Card className="p-4 text-sage-800 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold">Chuỗi hiện tại</h4>
-            <Flame size={20} />
+            <Flame size={20} className="text-coral-500"/>
           </div>
           <div className="text-3xl font-bold">{stats.currentStreak} <span className="text-lg font-normal">ngày</span></div>
         </Card>
-        <Card className="p-4 text-white gradient-sage shadow-lg shadow-sage-500/30">
+        <Card className="p-4 text-sage-800 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold">Kỷ lục</h4>
-            <Award size={20} />
+            <Award size={20} className="text-sandy-400"/>
           </div>
           <div className="text-3xl font-bold">{stats.longestStreak} <span className="text-lg font-normal">ngày</span></div>
         </Card>
       </div>
 
       {/* Overview Stats */}
-      <Card className="p-4 bg-white shadow-lg shadow-sage-100/50">
+      <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
             <Activity className="mx-auto mb-2 text-sage-500" size={24}/>
@@ -162,11 +161,11 @@ const History = () => {
       </Card>
       
       {/* Recent Workouts */}
-      <Card className="p-4 sm:p-6 bg-white shadow-lg shadow-sage-100/50">
+      <Card className="p-4 sm:p-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
         <h3 className="font-serif font-bold text-sage-800 text-lg mb-4">Hoạt động gần đây</h3>
         <div className="space-y-3">
           {workoutHistory.slice(0, 3).map((workout, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-sage-50/70 rounded-xl">
+            <div key={index} className="flex items-center justify-between p-3 bg-ivory-50 shadow-neumorphic-in-sm rounded-xl">
               <div className="flex-1">
                 <h4 className="font-semibold text-sage-800 text-sm">{workout.workout}</h4>
                 <p className="text-xs text-sage-600">
@@ -194,26 +193,26 @@ const History = () => {
           <h1 className="text-2xl font-serif font-bold text-sage-800 mb-4">Lịch sử tập luyện</h1>
           
           {/* View Toggle */}
-          <div className="flex space-x-2">
+          <div className="flex p-1 space-x-1 bg-ivory-50 shadow-neumorphic-in rounded-2xl">
             <Button
-              variant={viewMode === 'calendar' ? 'default' : 'outline'}
+              variant="ghost"
               onClick={() => setViewMode('calendar')}
-              className={`rounded-xl ${
+              className={`flex-1 rounded-xl transition-all ${
                 viewMode === 'calendar'
-                  ? 'gradient-sage text-white'
-                  : 'border-sage-200 text-sage-600 hover:bg-sage-50'
+                  ? 'shadow-neumorphic-out-sm bg-sage-100 text-sage-700'
+                  : 'text-sage-600'
               }`}
             >
               <Calendar size={16} className="mr-2" />
               Lịch
             </Button>
             <Button
-              variant={viewMode === 'stats' ? 'default' : 'outline'}
+              variant="ghost"
               onClick={() => setViewMode('stats')}
-              className={`rounded-xl ${
+              className={`flex-1 rounded-xl transition-all ${
                 viewMode === 'stats'
-                  ? 'gradient-sage text-white'
-                  : 'border-sage-200 text-sage-600 hover:bg-sage-50'
+                  ? 'shadow-neumorphic-out-sm bg-sage-100 text-sage-700'
+                  : 'text-sage-600'
               }`}
             >
               <HistoryIcon size={16} className="mr-2" />
@@ -224,7 +223,7 @@ const History = () => {
 
         {/* Content */}
         {viewMode === 'calendar' ? (
-          <Card className="p-6 bg-white shadow-sm">
+          <Card className="p-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
             <div className="mb-4">
               <h2 className="font-serif font-bold text-sage-800 text-center">
                 Tháng {currentMonth + 1}, {currentYear}
@@ -236,11 +235,11 @@ const History = () => {
             {renderCalendar()}
             <div className="mt-4 flex items-center justify-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-sage-100 rounded"></div>
+                <div className="w-3 h-3 bg-sage-100 rounded-sm"></div>
                 <span className="text-sage-600">Đã tập</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-sage-500 rounded"></div>
+                <div className="w-3 h-3 bg-sage-500 rounded-sm"></div>
                 <span className="text-sage-600">Hôm nay</span>
               </div>
             </div>

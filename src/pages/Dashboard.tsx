@@ -56,25 +56,25 @@ const Dashboard = () => {
         </div>
 
         {/* Streak Counter */}
-        <Card className="p-6 mb-6 gradient-coral text-white">
+        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl text-sage-800">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-2 mb-2">
                 <span className="text-3xl">🔥</span>
                 <span className="text-3xl font-bold">{streak}</span>
               </div>
-              <p className="text-white/90 font-medium">ngày liên tiếp</p>
-              <p className="text-white/80 text-sm">Bạn đang làm rất tốt!</p>
+              <p className="text-sage-700 font-medium">ngày liên tiếp</p>
+              <p className="text-sage-600 text-sm">Bạn đang làm rất tốt!</p>
             </div>
             <div className="text-right">
               <div className="text-4xl mb-2">🏆</div>
-              <p className="text-white/90 text-sm">Streak Master</p>
+              <p className="text-sage-700 text-sm">Streak Master</p>
             </div>
           </div>
         </Card>
 
         {/* Today's Workout */}
-        <Card className="p-6 mb-6 bg-white shadow-lg">
+        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
           <div className="flex items-start space-x-4">
             <div className="text-4xl">{todayWorkout.image}</div>
             <div className="flex-1">
@@ -93,7 +93,8 @@ const Dashboard = () => {
               </p>
               <Button 
                 onClick={handleStartWorkout}
-                className="w-full gradient-sage text-white font-medium py-3 rounded-xl"
+                variant="ghost"
+                className="w-full bg-sage-500 text-ivory-50 font-bold py-3 rounded-xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
               >
                 Bắt đầu tập 🚀
               </Button>
@@ -103,7 +104,7 @@ const Dashboard = () => {
 
         {/* Current Challenge */}
         {challenges.map((challenge, index) => (
-          <Card key={index} className="p-6 mb-6 bg-white shadow-lg">
+          <Card key={index} className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
             <h2 className="text-lg font-serif font-bold text-sage-800 mb-3">
               Thử thách đang tham gia
             </h2>
@@ -121,9 +122,9 @@ const Dashboard = () => {
                   {challenge.progress}/{challenge.total} ngày
                 </span>
               </div>
-              <div className="w-full bg-sage-100 rounded-full h-2">
+              <div className="w-full bg-sage-100 rounded-full h-2 shadow-neumorphic-in-sm">
                 <div 
-                  className="gradient-sage h-2 rounded-full transition-all duration-300"
+                  className="bg-sage-400 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${(challenge.progress / challenge.total) * 100}%` }}
                 ></div>
               </div>
@@ -136,11 +137,11 @@ const Dashboard = () => {
           <h2 className="text-lg font-serif font-bold text-sage-800 mb-4">
             Khám phá thêm
           </h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {recommendations.map((item, index) => (
               <Card 
                 key={index} 
-                className="p-4 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                className="p-4 bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl hover:shadow-neumorphic-in-sm transition-shadow cursor-pointer active:scale-95"
                 onClick={handleStartWorkout}
               >
                 <div className="text-2xl mb-2">{item.image}</div>
@@ -153,17 +154,17 @@ const Dashboard = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <Card className="p-4 text-center bg-white shadow-sm">
+          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
             <div className="text-2xl mb-2">📅</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">12</div>
             <p className="text-xs text-sage-600">Buổi tập</p>
           </Card>
-          <Card className="p-4 text-center bg-white shadow-sm">
+          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
             <div className="text-2xl mb-2">⏰</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">180</div>
             <p className="text-xs text-sage-600">Phút tập</p>
           </Card>
-          <Card className="p-4 text-center bg-white shadow-sm">
+          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
             <div className="text-2xl mb-2">🏅</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">5</div>
             <p className="text-xs text-sage-600">Huy hiệu</p>

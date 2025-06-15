@@ -67,15 +67,16 @@ const Index = () => {
         <div className="p-6 space-y-3">
           <Button 
             onClick={() => navigate('/onboarding')}
-            className="w-full gradient-sage text-white font-medium py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+            variant="ghost"
+            className="w-full bg-sage-500 text-ivory-50 font-medium py-4 text-lg rounded-2xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
           >
             Bắt đầu hành trình
           </Button>
           
           <Button 
             onClick={() => navigate('/dashboard')}
-            variant="outline"
-            className="w-full border-sage-300 text-sage-700 font-medium py-6 text-lg rounded-2xl hover:bg-sage-50"
+            variant="ghost"
+            className="w-full text-sage-700 font-medium py-4 text-lg rounded-2xl bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm transition-all"
           >
             Đã có tài khoản? Đăng nhập
           </Button>

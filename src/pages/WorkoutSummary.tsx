@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -52,31 +51,31 @@ const WorkoutSummary = () => {
         </div>
 
         {/* Stats Card */}
-        <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
+        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
           <h2 className="text-base font-serif font-bold text-sage-800 mb-3 text-center">
             Thống kê buổi tập
           </h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <Clock className="mx-auto mb-1.5 text-sage-600" size={20} />
               <div className="text-lg font-bold text-sage-800">{workoutStats.duration}</div>
               <p className="text-xs text-sage-600">Thời gian</p>
             </div>
             
-            <div className="text-center p-3 bg-coral-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm border-2 border-coral-200">
               <Flame className="mx-auto mb-1.5 text-coral-600" size={20} />
               <div className="text-lg font-bold text-coral-800">{workoutStats.calories}</div>
               <p className="text-xs text-coral-600">Calo đốt</p>
             </div>
             
-            <div className="text-center p-3 bg-sandy-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1.5">🧘‍♀️</div>
               <div className="text-lg font-bold text-sandy-800">{workoutStats.poses}</div>
               <p className="text-xs text-sandy-600">Tư thế</p>
             </div>
             
-            <div className="text-center p-3 bg-sage-50 rounded-lg">
+            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
               <div className="text-xl mb-1.5">🔥</div>
               <div className="text-lg font-bold text-sage-800">{workoutStats.streak}</div>
               <p className="text-xs text-sage-600">Ngày streak</p>
@@ -85,7 +84,7 @@ const WorkoutSummary = () => {
         </Card>
 
         {/* Achievements */}
-        <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
+        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
           <h2 className="text-base font-serif font-bold text-sage-800 mb-3 text-center">
             Huy hiệu đạt được
           </h2>
@@ -94,10 +93,10 @@ const WorkoutSummary = () => {
             {achievements.map((achievement, index) => (
               <div 
                 key={index}
-                className={`flex items-center space-x-3 p-3 rounded-lg ${
+                className={`flex items-center space-x-3 p-3 rounded-2xl ${
                   achievement.isNew 
-                    ? 'bg-gradient-to-r from-coral-100 to-sage-100 border border-coral-300' 
-                    : 'bg-sage-50'
+                    ? 'shadow-neumorphic-out-sm border-2 border-coral-300' 
+                    : 'shadow-neumorphic-in-sm'
                 }`}
               >
                 <div className="text-2xl">{achievement.icon}</div>
@@ -124,8 +123,8 @@ const WorkoutSummary = () => {
         <div className="space-y-2.5">
           <Button
             onClick={handleShare}
-            variant="outline"
-            className="w-full border-sage-300 text-sage-700 py-3 rounded-xl text-sm"
+            variant="ghost"
+            className="w-full py-3 rounded-xl text-sm bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm text-sage-700"
           >
             <Share2 size={16} className="mr-2" />
             Chia sẻ thành tích
@@ -133,7 +132,8 @@ const WorkoutSummary = () => {
           
           <Button
             onClick={handleGoHome}
-            className="w-full gradient-sage text-white py-3 rounded-xl text-base font-medium"
+            variant="ghost"
+            className="w-full bg-sage-500 text-white py-3 rounded-xl text-base font-medium shadow-lg hover:bg-sage-600 active:scale-95"
           >
             <Home size={16} className="mr-2" />
             Về Trang chủ

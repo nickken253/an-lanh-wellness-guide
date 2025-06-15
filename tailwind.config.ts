@@ -19,6 +19,12 @@ export default {
 			}
 		},
 		extend: {
+			boxShadow: {
+        'neumorphic-out': '6px 6px 12px #e6d7c3, -6px -6px 12px #ffffff',
+        'neumorphic-in': 'inset 6px 6px 12px #e6d7c3, inset -6px -6px 12px #ffffff',
+        'neumorphic-out-sm': '4px 4px 8px #e6d7c3, -4px -4px 8px #ffffff',
+        'neumorphic-in-sm': 'inset 4px 4px 8px #e6d7c3, inset -4px -4px 8px #ffffff',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
