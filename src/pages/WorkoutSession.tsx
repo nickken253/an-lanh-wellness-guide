@@ -98,11 +98,16 @@ const WorkoutSession = () => {
   const handleStop = () => {
     navigate('/workout-summary');
   };
+  
+  const handleSkipRest = () => {
+    setIsResting(false);
+    setTimeRemaining(poses[currentPose].duration);
+  };
 
   if (isResting) {
     return (
       <div className="min-h-screen bg-ivory-50 flex items-center justify-center p-4">
-        <div className="text-center max-w-xs mx-auto">
+        <div className="text-center max-w-xs mx-auto w-full">
           <div className="text-6xl font-bold text-sage-800 mb-3">
             {timeRemaining}
           </div>
@@ -111,23 +116,30 @@ const WorkoutSession = () => {
           </h2>
           <p className="text-sage-600 mb-6 text-sm">Chuẩn bị cho động tác tiếp theo</p>
           
-          <Card className="p-4 bg-white shadow-lg rounded-xl">
+          <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
             <div className="text-3xl mb-2">{poses[currentPose].image}</div>
             <h3 className="text-sm font-semibold text-sage-800 mb-1">Động tác tiếp theo</h3>
             <p className="text-xs text-sage-600">{poses[currentPose].name}</p>
           </Card>
+
+          <Button
+            onClick={handleSkipRest}
+            className="w-full gradient-sage text-white font-medium py-2.5 text-sm rounded-xl"
+          >
+            Tập luôn
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-ivory-50 relative">
+    <div className="min-h-screen bg-ivory-50 flex flex-col">
       {/* Top Bar */}
-      <div className="p-3 bg-white shadow-sm">
+      <div className="p-3 bg-white shadow-sm flex-shrink-0">
         <div className="flex items-center justify-between mb-2">
           <h1 className="text-sm font-serif font-bold text-sage-800 flex-1 truncate">
-            {poses[currentPose].name}
+            Bài tập {currentPose + 1}/{totalPoses}
           </h1>
           <div className="text-lg font-bold text-sage-800 ml-2">
             {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
@@ -136,48 +148,40 @@ const WorkoutSession = () => {
         <Progress value={progressPercentage} className="h-1.5" />
       </div>
 
-      {/* Main Video Area */}
-      <div className="relative h-80 bg-gradient-to-br from-sage-200 to-sage-300 m-3 rounded-xl overflow-hidden">
-        {/* Simulated camera view */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-4xl opacity-50">{poses[currentPose].image}</div>
-        </div>
-        
-        {/* AI Skeleton Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-24 h-36 border-2 border-sage-600 border-dashed rounded-full opacity-30"></div>
+      {/* Main Content Area */}
+      <div className="flex-grow flex flex-col p-3 gap-3">
+        {/* Instructor View */}
+        <div className="flex-1 bg-gradient-to-br from-sage-200 to-sage-300 rounded-xl overflow-hidden relative flex items-center justify-center">
+            <div className="absolute top-2 left-2 bg-black/20 text-white text-xs px-2 py-0.5 rounded-full backdrop-blur-sm">Động tác mẫu</div>
+            <div className="text-center">
+                <div className="text-5xl mb-2">{poses[currentPose].image}</div>
+                <h3 className="font-semibold text-sage-800">{poses[currentPose].name}</h3>
+                <p className="text-xs text-sage-600 italic mt-1">{poses[currentPose].sanskrit}</p>
+            </div>
         </div>
 
-        {/* Instructor Video (Small) */}
-        <div className="absolute top-3 right-3 w-16 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center">
-          <div className="text-xl">{poses[currentPose].image}</div>
+        {/* User Camera View */}
+        <div className="flex-1 bg-gray-300 rounded-xl overflow-hidden relative flex items-center justify-center">
+            <div className="absolute top-2 left-2 bg-black/20 text-white text-xs px-2 py-0.5 rounded-full backdrop-blur-sm">Camera của bạn</div>
+            <div className="w-24 h-36 border-2 border-sage-600 border-dashed rounded-full opacity-30"></div>
+            {aiMessage && (
+                <div className="absolute bottom-3 left-3 right-3">
+                    <Card className="p-2.5 bg-sage-100/90 border-sage-300 animate-fade-in backdrop-blur-sm">
+                        <p className="text-sage-800 text-center text-sm font-medium">💬 {aiMessage}</p>
+                    </Card>
+                </div>
+            )}
         </div>
-      </div>
-
-      {/* AI Feedback */}
-      <div className="px-3 mb-3">
-        {aiMessage && (
-          <Card className="p-2.5 bg-sage-100 border-sage-300 animate-fade-in">
-            <p className="text-sage-800 text-center text-sm font-medium">💬 {aiMessage}</p>
-          </Card>
-        )}
       </div>
 
       {/* Controls */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-sage-200">
-        <div className="flex justify-center space-x-4">
+      <div className="flex-shrink-0 p-4 bg-white border-t border-sage-200">
+        <div className="flex justify-center">
           <Button
             onClick={handlePause}
-            className="gradient-sage text-white px-6 py-3 rounded-xl"
+            className="gradient-sage text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
           >
-            <Pause size={20} />
-          </Button>
-          <Button
-            onClick={handleStop}
-            variant="outline"
-            className="border-coral-300 text-coral-600 px-6 py-3 rounded-xl"
-          >
-            <Square size={20} />
+            <Pause size={24} />
           </Button>
         </div>
       </div>
