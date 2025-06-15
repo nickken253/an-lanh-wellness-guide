@@ -1,9 +1,9 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import BottomNavigation from '@/components/BottomNavigation';
-import { Home, Search, History, User } from 'lucide-react';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -39,6 +39,10 @@ const Dashboard = () => {
     { title: 'Thiền chánh niệm', duration: '10 phút', image: '🧘‍♀️', type: 'meditation' },
     { title: 'Yoga năng lượng', duration: '30 phút', image: '⚡', type: 'energy' }
   ];
+
+  const handleStartWorkout = () => {
+    navigate('/workout-details');
+  };
 
   return (
     <div className="min-h-screen bg-ivory-50 pb-20">
@@ -87,7 +91,10 @@ const Dashboard = () => {
               <p className="text-sage-600 text-sm mb-4">
                 {todayWorkout.description}
               </p>
-              <Button className="w-full gradient-sage text-white font-medium py-3 rounded-xl">
+              <Button 
+                onClick={handleStartWorkout}
+                className="w-full gradient-sage text-white font-medium py-3 rounded-xl"
+              >
                 Bắt đầu tập 🚀
               </Button>
             </div>
@@ -131,7 +138,11 @@ const Dashboard = () => {
           </h2>
           <div className="grid grid-cols-2 gap-3">
             {recommendations.map((item, index) => (
-              <Card key={index} className="p-4 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <Card 
+                key={index} 
+                className="p-4 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                onClick={handleStartWorkout}
+              >
                 <div className="text-2xl mb-2">{item.image}</div>
                 <h3 className="font-semibold text-sage-800 text-sm mb-1">{item.title}</h3>
                 <p className="text-xs text-sage-600">⏱️ {item.duration}</p>

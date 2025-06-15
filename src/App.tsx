@@ -10,6 +10,10 @@ import Onboarding from "./pages/Onboarding";
 import Explore from "./pages/Explore";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
+import WorkoutDetails from "./pages/WorkoutDetails";
+import WorkoutSetup from "./pages/WorkoutSetup";
+import WorkoutSession from "./pages/WorkoutSession";
+import WorkoutSummary from "./pages/WorkoutSummary";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +31,10 @@ const App = () => (
           <Route path="/explore" element={<Explore />} />
           <Route path="/history" element={<History />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/workout-details" element={<WorkoutDetails />} />
+          <Route path="/workout-setup" element={<WorkoutSetup />} />
+          <Route path="/workout-session" element={<WorkoutSession />} />
+          <Route path="/workout-summary" element={<WorkoutSummary />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

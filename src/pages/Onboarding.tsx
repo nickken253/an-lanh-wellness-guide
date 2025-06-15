@@ -160,32 +160,36 @@ const Onboarding = () => {
           </p>
         </div>
 
-        {/* Options */}
-        <div className="space-y-3 mb-8">
-          {currentStepData.options.map((option) => (
-            <Card
-              key={option.id}
-              className={`p-4 cursor-pointer transition-all duration-200 border-2 ${
-                isOptionSelected(option.id)
-                  ? 'border-sage-500 bg-sage-50 shadow-md'
-                  : 'border-sage-200 bg-white hover:border-sage-300 hover:shadow-sm'
-              }`}
-              onClick={() => handleOptionSelect(option.id)}
-            >
-              <div className="flex items-start space-x-3">
-                <span className="text-2xl flex-shrink-0">{option.icon}</span>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-sage-800 mb-1">{option.label}</h3>
-                  <p className="text-sm text-sage-600">{option.description}</p>
-                </div>
-                {isOptionSelected(option.id) && (
-                  <div className="w-6 h-6 rounded-full gradient-sage flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">✓</span>
+        {/* Options - Fixed height container to prevent layout shifts */}
+        <div className="min-h-[400px] mb-8">
+          <div className="space-y-3">
+            {currentStepData.options.map((option) => (
+              <Card
+                key={option.id}
+                className={`p-4 cursor-pointer transition-all duration-200 border-2 min-h-[80px] ${
+                  isOptionSelected(option.id)
+                    ? 'border-sage-500 bg-sage-50 shadow-md'
+                    : 'border-sage-200 bg-white hover:border-sage-300 hover:shadow-sm'
+                }`}
+                onClick={() => handleOptionSelect(option.id)}
+              >
+                <div className="flex items-start space-x-3 h-full">
+                  <span className="text-2xl flex-shrink-0">{option.icon}</span>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-sage-800 mb-1">{option.label}</h3>
+                    <p className="text-sm text-sage-600">{option.description}</p>
                   </div>
-                )}
-              </div>
-            </Card>
-          ))}
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+                    {isOptionSelected(option.id) && (
+                      <div className="w-6 h-6 rounded-full gradient-sage flex items-center justify-center">
+                        <span className="text-white text-sm">✓</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Continue Button */}

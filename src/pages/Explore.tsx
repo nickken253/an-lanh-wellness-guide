@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import BottomNavigation from '@/components/BottomNavigation';
 import { Search } from 'lucide-react';
 
 const Explore = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('programs');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -86,6 +88,10 @@ const Explore = () => {
     { title: 'Thiền năng lượng sáng', duration: '8 phút', image: '☀️', type: 'Energy' }
   ];
 
+  const handleStartWorkout = () => {
+    navigate('/workout-details');
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'programs':
@@ -109,7 +115,10 @@ const Explore = () => {
                         🎯 {program.sessions} buổi
                       </Badge>
                     </div>
-                    <Button className="w-full gradient-sage text-white rounded-xl">
+                    <Button 
+                      onClick={handleStartWorkout}
+                      className="w-full gradient-sage text-white rounded-xl"
+                    >
                       Bắt đầu lộ trình
                     </Button>
                   </div>
