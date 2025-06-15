@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -45,7 +44,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivory-50 pb-20">
+    <div className="min-h-screen bg-background pb-20">
       <div className="p-6">
         {/* Header */}
         <div className="mb-8">
@@ -56,7 +55,7 @@ const Dashboard = () => {
         </div>
 
         {/* Streak Counter */}
-        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl text-sage-800">
+        <Card className="p-6 mb-6 rounded-3xl shadow-md text-sage-800">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-2 mb-2">
@@ -74,7 +73,7 @@ const Dashboard = () => {
         </Card>
 
         {/* Today's Workout */}
-        <Card className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
+        <Card className="p-6 mb-6 rounded-3xl shadow-md">
           <div className="flex items-start space-x-4">
             <div className="text-4xl">{todayWorkout.image}</div>
             <div className="flex-1">
@@ -93,8 +92,7 @@ const Dashboard = () => {
               </p>
               <Button 
                 onClick={handleStartWorkout}
-                variant="ghost"
-                className="w-full bg-sage-500 text-ivory-50 font-bold py-3 rounded-xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
+                className="w-full font-bold py-3 rounded-xl shadow-lg active:scale-95 transition-all"
               >
                 Bắt đầu tập 🚀
               </Button>
@@ -104,7 +102,7 @@ const Dashboard = () => {
 
         {/* Current Challenge */}
         {challenges.map((challenge, index) => (
-          <Card key={index} className="p-6 mb-6 bg-ivory-50 shadow-neumorphic-out rounded-3xl">
+          <Card key={index} className="p-6 mb-6 rounded-3xl shadow-md">
             <h2 className="text-lg font-serif font-bold text-sage-800 mb-3">
               Thử thách đang tham gia
             </h2>
@@ -122,7 +120,7 @@ const Dashboard = () => {
                   {challenge.progress}/{challenge.total} ngày
                 </span>
               </div>
-              <div className="w-full bg-sage-100 rounded-full h-2 shadow-neumorphic-in-sm">
+              <div className="w-full bg-sage-100 rounded-full h-2 shadow-inner">
                 <div 
                   className="bg-sage-400 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${(challenge.progress / challenge.total) * 100}%` }}
@@ -141,7 +139,7 @@ const Dashboard = () => {
             {recommendations.map((item, index) => (
               <Card 
                 key={index} 
-                className="p-4 bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl hover:shadow-neumorphic-in-sm transition-shadow cursor-pointer active:scale-95"
+                className="p-4 rounded-2xl shadow-md hover:shadow-lg transition-shadow cursor-pointer active:scale-95"
                 onClick={handleStartWorkout}
               >
                 <div className="text-2xl mb-2">{item.image}</div>
@@ -154,17 +152,17 @@ const Dashboard = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
+          <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">📅</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">12</div>
             <p className="text-xs text-sage-600">Buổi tập</p>
           </Card>
-          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
+          <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">⏰</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">180</div>
             <p className="text-xs text-sage-600">Phút tập</p>
           </Card>
-          <Card className="p-4 text-center bg-ivory-50 shadow-neumorphic-out-sm rounded-2xl">
+          <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">🏅</div>
             <div className="text-2xl font-bold text-sage-800 mb-1">5</div>
             <p className="text-xs text-sage-600">Huy hiệu</p>

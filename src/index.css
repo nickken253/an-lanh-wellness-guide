@@ -7,10 +7,10 @@
 
 @layer base {
   :root {
-    --background: 60 9% 98%; /* ivory-50 */
+    --background: 84 22% 94%; /* sage-100 */
     --foreground: 210 11% 15%; /* charcoal gray */
 
-    --card: 60 9% 98%;
+    --card: 60 9% 98%; /* ivory-50 */
     --card-foreground: 210 11% 15%;
 
     --popover: 60 9% 98%;
@@ -31,18 +31,18 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9% 98%;
 
-    --border: 84 22% 89%; /* sage-200 */
-    --input: 84 22% 89%;
+    --border: 84 22% 80%; /* sage-200, slightly darker */
+    --input: 84 22% 80%; /* sage-200, slightly darker */
     --ring: 84 22% 59%; /* sage-500 */
 
     --radius: 16px; /* M3 uses more rounded corners */
   }
 
   .dark {
-    --background: 210 11% 15%;
+    --background: 84 15% 20%;
     --foreground: 60 9% 98%;
 
-    --card: 210 11% 15%;
+    --card: 84 15% 25%;
     --card-foreground: 60 9% 98%;
 
     --popover: 210 11% 15%;
@@ -63,8 +63,8 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 60 9% 98%;
 
-    --border: 84 15% 25%;
-    --input: 84 15% 25%;
+    --border: 84 15% 30%;
+    --input: 84 15% 30%;
     --ring: 84 22% 59%;
   }
 }
@@ -85,18 +85,4 @@
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-border rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/50;
-}
+/* ... keep existing code */
