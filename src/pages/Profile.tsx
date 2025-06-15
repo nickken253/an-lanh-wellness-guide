@@ -112,13 +112,13 @@ const Profile = () => {
                     : 'bg-gray-50 border-2 border-gray-200 opacity-50'
                 }`}
               >
-                <div className="text-2xl mb-2">{badge.icon}</div>
-                <h4 className={`text-sm font-semibold mb-1 ${
+                <div className="text-4xl mb-2">{badge.icon}</div>
+                <h4 className={`text-xs font-semibold mb-1 ${
                   badge.earned ? 'text-sage-800' : 'text-gray-400'
                 }`}>
                   {badge.name}
                 </h4>
-                <p className={`text-xs ${
+                <p className={`text-[10px] leading-tight ${
                   badge.earned ? 'text-sage-600' : 'text-gray-400'
                 }`}>
                   {badge.description}
