@@ -4,10 +4,12 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import BottomNavigation from '@/components/BottomNavigation';
-import { Calendar, History as HistoryIcon } from 'lucide-react';
+import { Calendar, History as HistoryIcon, Flame, Activity, Clock, Award } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
 
 const History = () => {
-  const [viewMode, setViewMode] = useState<'calendar' | 'stats'>('calendar');
+  const [viewMode, setViewMode] = useState<'calendar' | 'stats'>('stats');
 
   const workoutHistory = [
     { date: '2024-01-15', workout: 'Yoga Chào Mặt Trời', duration: 15, calories: 45, completed: true },
@@ -18,6 +20,18 @@ const History = () => {
     { date: '2024-01-10', workout: 'Yoga Chào Mặt Trời', duration: 15, calories: 45, completed: true },
     { date: '2024-01-09', workout: 'Yoga Giảm Stress', duration: 20, calories: 50, completed: true },
   ];
+
+  const chartData = workoutHistory.slice(0, 7).reverse().map(w => ({
+    name: new Date(w.date).toLocaleDateString('vi-VN', { weekday: 'short' }),
+    minutes: w.duration,
+  }));
+
+  const chartConfig = {
+    minutes: {
+      label: "Phút",
+      color: "#A3B18A",
+    },
+  } satisfies ChartConfig;
 
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
@@ -84,54 +98,75 @@ const History = () => {
   };
 
   const renderStats = () => (
-    <div className="space-y-6">
-      {/* Overview Stats */}
+    <div className="space-y-6 animate-fade-in">
+      {/* Weekly Chart */}
+      <Card className="p-4 sm:p-6 bg-white shadow-lg shadow-sage-100/50">
+        <h3 className="font-serif font-bold text-sage-800 text-lg mb-1">Tổng quan tuần</h3>
+        <p className="text-sm text-sage-600 mb-4">Thời gian tập luyện (phút)</p>
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">
+          <BarChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
+            <CartesianGrid vertical={false} strokeDasharray="3 3" className="stroke-sage-100" />
+            <XAxis
+              dataKey="name"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={10}
+              className="text-xs text-sage-500"
+            />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel indicator="dot" className="bg-white/80 glass-effect" />}
+            />
+            <Bar dataKey="minutes" fill="var(--color-minutes)" radius={[8, 8, 0, 0]} />
+          </BarChart>
+        </ChartContainer>
+      </Card>
+
+      {/* Streak Stats */}
       <div className="grid grid-cols-2 gap-4">
-        <Card className="p-4 text-center bg-white shadow-sm">
-          <div className="text-2xl mb-2">📊</div>
-          <div className="text-2xl font-bold text-sage-800 mb-1">{stats.totalWorkouts}</div>
-          <p className="text-xs text-sage-600">Tổng buổi tập</p>
+        <Card className="p-4 text-white gradient-coral shadow-lg shadow-coral-500/30">
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="font-semibold">Chuỗi hiện tại</h4>
+            <Flame size={20} />
+          </div>
+          <div className="text-3xl font-bold">{stats.currentStreak} <span className="text-lg font-normal">ngày</span></div>
         </Card>
-        <Card className="p-4 text-center bg-white shadow-sm">
-          <div className="text-2xl mb-2">⏰</div>
-          <div className="text-2xl font-bold text-sage-800 mb-1">{stats.totalMinutes}</div>
-          <p className="text-xs text-sage-600">Tổng phút tập</p>
-        </Card>
-        <Card className="p-4 text-center bg-white shadow-sm">
-          <div className="text-2xl mb-2">🔥</div>
-          <div className="text-2xl font-bold text-sage-800 mb-1">{stats.totalCalories}</div>
-          <p className="text-xs text-sage-600">Calo đã đốt</p>
-        </Card>
-        <Card className="p-4 text-center bg-white shadow-sm">
-          <div className="text-2xl mb-2">📈</div>
-          <div className="text-2xl font-bold text-sage-800 mb-1">{stats.averageDuration}</div>
-          <p className="text-xs text-sage-600">Phút/buổi TB</p>
+        <Card className="p-4 text-white gradient-sage shadow-lg shadow-sage-500/30">
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="font-semibold">Kỷ lục</h4>
+            <Award size={20} />
+          </div>
+          <div className="text-3xl font-bold">{stats.longestStreak} <span className="text-lg font-normal">ngày</span></div>
         </Card>
       </div>
 
-      {/* Streak Stats */}
-      <Card className="p-6 bg-white shadow-sm">
-        <h3 className="font-serif font-bold text-sage-800 mb-4">Chuỗi ngày tập luyện</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-4 bg-coral-50 rounded-xl">
-            <div className="text-3xl mb-2">🔥</div>
-            <div className="text-xl font-bold text-coral-600 mb-1">{stats.currentStreak}</div>
-            <p className="text-sm text-coral-600">Hiện tại</p>
+      {/* Overview Stats */}
+      <Card className="p-4 bg-white shadow-lg shadow-sage-100/50">
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <Activity className="mx-auto mb-2 text-sage-500" size={24}/>
+            <div className="text-xl font-bold text-sage-800">{stats.totalWorkouts}</div>
+            <p className="text-xs text-sage-600">Buổi tập</p>
           </div>
-          <div className="text-center p-4 bg-sage-50 rounded-xl">
-            <div className="text-3xl mb-2">🏆</div>
-            <div className="text-xl font-bold text-sage-600 mb-1">{stats.longestStreak}</div>
-            <p className="text-sm text-sage-600">Kỷ lục</p>
+          <div>
+            <Clock className="mx-auto mb-2 text-sage-500" size={24}/>
+            <div className="text-xl font-bold text-sage-800">{stats.totalMinutes}</div>
+            <p className="text-xs text-sage-600">Phút</p>
+          </div>
+          <div>
+            <Flame className="mx-auto mb-2 text-coral-500" size={24}/>
+            <div className="text-xl font-bold text-sage-800">{stats.totalCalories}</div>
+            <p className="text-xs text-sage-600">Calo</p>
           </div>
         </div>
       </Card>
-
+      
       {/* Recent Workouts */}
-      <Card className="p-6 bg-white shadow-sm">
-        <h3 className="font-serif font-bold text-sage-800 mb-4">Hoạt động gần đây</h3>
+      <Card className="p-4 sm:p-6 bg-white shadow-lg shadow-sage-100/50">
+        <h3 className="font-serif font-bold text-sage-800 text-lg mb-4">Hoạt động gần đây</h3>
         <div className="space-y-3">
-          {workoutHistory.slice(0, 5).map((workout, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-sage-50 rounded-xl">
+          {workoutHistory.slice(0, 3).map((workout, index) => (
+            <div key={index} className="flex items-center justify-between p-3 bg-sage-50/70 rounded-xl">
               <div className="flex-1">
                 <h4 className="font-semibold text-sage-800 text-sm">{workout.workout}</h4>
                 <p className="text-xs text-sage-600">
@@ -139,9 +174,9 @@ const History = () => {
                 </p>
               </div>
               <div className="text-right">
-                <div className="flex items-center space-x-2 text-xs text-sage-600">
-                  <span>⏱️ {workout.duration}m</span>
-                  <span>🔥 {workout.calories}cal</span>
+                <div className="flex items-center space-x-3 text-xs text-sage-600">
+                  <span><Clock size={12} className="inline mr-1" />{workout.duration}m</span>
+                  <span><Flame size={12} className="inline mr-1" />{workout.calories}cal</span>
                 </div>
               </div>
             </div>
@@ -152,7 +187,7 @@ const History = () => {
   );
 
   return (
-    <div className="min-h-screen bg-ivory-50 pb-20">
+    <div className="min-h-screen bg-ivory-50 pb-28">
       <div className="p-6">
         {/* Header */}
         <div className="mb-6">
