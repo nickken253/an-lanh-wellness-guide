@@ -16,7 +16,16 @@ export const ProfileCard = ({ user, onSave }: ProfileCardProps) => {
   const xpProgress = (user.xp / user.xpToNext) * 100;
 
   return (
-    <Card className="p-6 mb-6 rounded-3xl shadow-md">
+    <Card className="p-6 mb-6 rounded-3xl shadow-md relative">
+      <div className="absolute top-6 right-6">
+        <EditProfileSheet user={user} onSave={onSave}>
+          <Button variant="outline" size="sm">
+            <Edit className="h-4 w-4 mr-2" />
+            Chỉnh sửa
+          </Button>
+        </EditProfileSheet>
+      </div>
+      
       <div className="flex items-center space-x-4 mb-6">
         <Avatar className="w-16 h-16 bg-secondary">
           <AvatarFallback className="text-secondary-foreground text-xl font-bold">
@@ -24,14 +33,7 @@ export const ProfileCard = ({ user, onSave }: ProfileCardProps) => {
           </AvatarFallback>
         </Avatar>
         <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <h2 className="text-xl font-serif font-bold text-foreground">{user.name}</h2>
-            <EditProfileSheet user={user} onSave={onSave}>
-              <Button variant="ghost" size="icon" className="h-6 w-6 rounded-full">
-                <Edit className="h-3 w-3" />
-              </Button>
-            </EditProfileSheet>
-          </div>
+          <h2 className="text-xl font-serif font-bold text-foreground">{user.name}</h2>
           <p className="text-muted-foreground text-sm">{user.email}</p>
           <div className="flex items-center space-x-2 mt-2">
             <Badge variant="secondary">Level {user.level}</Badge>
