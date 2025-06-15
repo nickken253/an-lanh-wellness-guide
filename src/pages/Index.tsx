@@ -22,8 +22,8 @@ const Index = () => {
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary flex items-center justify-center animate-float">
             <span className="text-3xl text-primary-foreground">🧘‍♀️</span>
           </div>
-          <h1 className="text-4xl font-serif font-bold text-sage-800 mb-2">An Lành</h1>
-          <p className="text-sage-600 font-medium">Yoga cho tâm hồn an yên</p>
+          <h1 className="text-4xl font-serif font-bold text-foreground mb-2">An Lành</h1>
+          <p className="text-muted-foreground font-medium">Yoga cho tâm hồn an yên</p>
         </div>
       </div>
     );
@@ -38,10 +38,10 @@ const Index = () => {
             <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-primary flex items-center justify-center">
               <span className="text-5xl text-primary-foreground">🧘‍♀️</span>
             </div>
-            <h1 className="text-3xl font-serif font-bold text-sage-800 mb-4">
+            <h1 className="text-3xl font-serif font-bold text-foreground mb-4">
               Chào mừng đến với An Lành
             </h1>
-            <p className="text-lg text-sage-600 mb-8 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Ứng dụng yoga cá nhân hóa với AI Coach, giúp bạn xây dựng thói quen sống lành mạnh ngay tại nhà
             </p>
             

@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -48,26 +49,26 @@ const Dashboard = () => {
       <div className="p-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-serif font-bold text-sage-800 mb-2">
+          <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
             {getGreeting()}, An! 👋
           </h1>
-          <p className="text-sage-600">Hãy bắt đầu ngày mới với năng lượng tích cực</p>
+          <p className="text-muted-foreground">Hãy bắt đầu ngày mới với năng lượng tích cực</p>
         </div>
 
         {/* Streak Counter */}
-        <Card className="p-6 mb-6 rounded-3xl shadow-md text-sage-800">
+        <Card className="p-6 mb-6 rounded-3xl shadow-md text-card-foreground">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-2 mb-2">
                 <span className="text-3xl">🔥</span>
                 <span className="text-3xl font-bold">{streak}</span>
               </div>
-              <p className="text-sage-700 font-medium">ngày liên tiếp</p>
-              <p className="text-sage-600 text-sm">Bạn đang làm rất tốt!</p>
+              <p className="font-medium">ngày liên tiếp</p>
+              <p className="text-muted-foreground text-sm">Bạn đang làm rất tốt!</p>
             </div>
             <div className="text-right">
               <div className="text-4xl mb-2">🏆</div>
-              <p className="text-sage-700 text-sm">Streak Master</p>
+              <p className="text-muted-foreground text-sm">Streak Master</p>
             </div>
           </div>
         </Card>
@@ -77,17 +78,17 @@ const Dashboard = () => {
           <div className="flex items-start space-x-4">
             <div className="text-4xl">{todayWorkout.image}</div>
             <div className="flex-1">
-              <h2 className="text-xl font-serif font-bold text-sage-800 mb-2">
+              <h2 className="text-xl font-serif font-bold text-foreground mb-2">
                 Bài tập cho hôm nay
               </h2>
-              <h3 className="text-lg font-semibold text-sage-700 mb-1">
+              <h3 className="text-lg font-semibold text-foreground mb-1">
                 {todayWorkout.title}
               </h3>
-              <div className="flex items-center space-x-4 text-sm text-sage-600 mb-3">
+              <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
                 <span>⏱️ {todayWorkout.duration}</span>
                 <span>📊 {todayWorkout.level}</span>
               </div>
-              <p className="text-sage-600 text-sm mb-4">
+              <p className="text-muted-foreground text-sm mb-4">
                 {todayWorkout.description}
               </p>
               <Button 
@@ -103,26 +104,26 @@ const Dashboard = () => {
         {/* Current Challenge */}
         {challenges.map((challenge, index) => (
           <Card key={index} className="p-6 mb-6 rounded-3xl shadow-md">
-            <h2 className="text-lg font-serif font-bold text-sage-800 mb-3">
+            <h2 className="text-lg font-serif font-bold text-foreground mb-3">
               Thử thách đang tham gia
             </h2>
             <div className="flex items-center justify-between mb-3">
               <div>
-                <h3 className="font-semibold text-sage-700">{challenge.title}</h3>
-                <p className="text-sm text-sage-600">{challenge.description}</p>
+                <h3 className="font-semibold text-foreground">{challenge.title}</h3>
+                <p className="text-sm text-muted-foreground">{challenge.description}</p>
               </div>
               <div className="text-2xl">🎯</div>
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-sage-600">Tiến trình</span>
-                <span className="font-semibold text-sage-800">
+                <span className="text-muted-foreground">Tiến trình</span>
+                <span className="font-semibold text-foreground">
                   {challenge.progress}/{challenge.total} ngày
                 </span>
               </div>
-              <div className="w-full bg-sage-100 rounded-full h-2 shadow-inner">
+              <div className="w-full bg-secondary rounded-full h-2 shadow-inner">
                 <div 
-                  className="bg-sage-400 h-2 rounded-full transition-all duration-300"
+                  className="bg-primary h-2 rounded-full transition-all duration-300"
                   style={{ width: `${(challenge.progress / challenge.total) * 100}%` }}
                 ></div>
               </div>
@@ -132,7 +133,7 @@ const Dashboard = () => {
 
         {/* Recommendations */}
         <div className="mb-6">
-          <h2 className="text-lg font-serif font-bold text-sage-800 mb-4">
+          <h2 className="text-lg font-serif font-bold text-foreground mb-4">
             Khám phá thêm
           </h2>
           <div className="grid grid-cols-2 gap-4">
@@ -143,8 +144,8 @@ const Dashboard = () => {
                 onClick={handleStartWorkout}
               >
                 <div className="text-2xl mb-2">{item.image}</div>
-                <h3 className="font-semibold text-sage-800 text-sm mb-1">{item.title}</h3>
-                <p className="text-xs text-sage-600">⏱️ {item.duration}</p>
+                <h3 className="font-semibold text-foreground text-sm mb-1">{item.title}</h3>
+                <p className="text-xs text-muted-foreground">⏱️ {item.duration}</p>
               </Card>
             ))}
           </div>
@@ -154,18 +155,18 @@ const Dashboard = () => {
         <div className="grid grid-cols-3 gap-4 mb-6">
           <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">📅</div>
-            <div className="text-2xl font-bold text-sage-800 mb-1">12</div>
-            <p className="text-xs text-sage-600">Buổi tập</p>
+            <div className="text-2xl font-bold text-foreground mb-1">12</div>
+            <p className="text-xs text-muted-foreground">Buổi tập</p>
           </Card>
           <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">⏰</div>
-            <div className="text-2xl font-bold text-sage-800 mb-1">180</div>
-            <p className="text-xs text-sage-600">Phút tập</p>
+            <div className="text-2xl font-bold text-foreground mb-1">180</div>
+            <p className="text-xs text-muted-foreground">Phút tập</p>
           </Card>
           <Card className="p-4 text-center rounded-2xl shadow-md">
             <div className="text-2xl mb-2">🏅</div>
-            <div className="text-2xl font-bold text-sage-800 mb-1">5</div>
-            <p className="text-xs text-sage-600">Huy hiệu</p>
+            <div className="text-2xl font-bold text-foreground mb-1">5</div>
+            <p className="text-xs text-muted-foreground">Huy hiệu</p>
           </Card>
         </div>
       </div>

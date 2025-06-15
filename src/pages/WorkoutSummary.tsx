@@ -1,3 +1,4 @@
+
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -37,55 +38,55 @@ const WorkoutSummary = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivory-50 flex items-center justify-center p-3">
+    <div className="min-h-screen bg-background flex items-center justify-center p-3">
       <div className="w-full max-w-sm">
         {/* Success Animation Area */}
         <div className="text-center mb-6">
           <div className="text-4xl mb-3 animate-bounce">🎉</div>
-          <h1 className="text-2xl font-serif font-bold text-sage-800 mb-2">
+          <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
             Tuyệt vời!
           </h1>
-          <p className="text-sage-600 text-base">
+          <p className="text-muted-foreground text-base">
             Bạn đã hoàn thành buổi tập yoga
           </p>
         </div>
 
         {/* Stats Card */}
-        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
-          <h2 className="text-base font-serif font-bold text-sage-800 mb-3 text-center">
+        <Card className="p-4 rounded-3xl shadow-md mb-4">
+          <h2 className="text-base font-serif font-bold text-foreground mb-3 text-center">
             Thống kê buổi tập
           </h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
-              <Clock className="mx-auto mb-1.5 text-sage-600" size={20} />
-              <div className="text-lg font-bold text-sage-800">{workoutStats.duration}</div>
-              <p className="text-xs text-sage-600">Thời gian</p>
-            </div>
+            <Card className="text-center p-3 rounded-2xl shadow-sm">
+              <Clock className="mx-auto mb-1.5 text-muted-foreground" size={20} />
+              <div className="text-lg font-bold text-foreground">{workoutStats.duration}</div>
+              <p className="text-xs text-muted-foreground">Thời gian</p>
+            </Card>
             
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm border-2 border-coral-200">
-              <Flame className="mx-auto mb-1.5 text-coral-600" size={20} />
-              <div className="text-lg font-bold text-coral-800">{workoutStats.calories}</div>
-              <p className="text-xs text-coral-600">Calo đốt</p>
-            </div>
+            <Card className="text-center p-3 rounded-2xl shadow-sm border-2 border-primary/50">
+              <Flame className="mx-auto mb-1.5 text-primary" size={20} />
+              <div className="text-lg font-bold text-primary">{workoutStats.calories}</div>
+              <p className="text-xs text-primary/80">Calo đốt</p>
+            </Card>
             
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <Card className="text-center p-3 rounded-2xl shadow-sm">
               <div className="text-xl mb-1.5">🧘‍♀️</div>
-              <div className="text-lg font-bold text-sandy-800">{workoutStats.poses}</div>
-              <p className="text-xs text-sandy-600">Tư thế</p>
-            </div>
+              <div className="text-lg font-bold text-foreground">{workoutStats.poses}</div>
+              <p className="text-xs text-muted-foreground">Tư thế</p>
+            </Card>
             
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <Card className="text-center p-3 rounded-2xl shadow-sm">
               <div className="text-xl mb-1.5">🔥</div>
-              <div className="text-lg font-bold text-sage-800">{workoutStats.streak}</div>
-              <p className="text-xs text-sage-600">Ngày streak</p>
-            </div>
+              <div className="text-lg font-bold text-foreground">{workoutStats.streak}</div>
+              <p className="text-xs text-muted-foreground">Ngày streak</p>
+            </Card>
           </div>
         </Card>
 
         {/* Achievements */}
-        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
-          <h2 className="text-base font-serif font-bold text-sage-800 mb-3 text-center">
+        <Card className="p-4 rounded-3xl shadow-md mb-4">
+          <h2 className="text-base font-serif font-bold text-foreground mb-3 text-center">
             Huy hiệu đạt được
           </h2>
           
@@ -95,24 +96,24 @@ const WorkoutSummary = () => {
                 key={index}
                 className={`flex items-center space-x-3 p-3 rounded-2xl ${
                   achievement.isNew 
-                    ? 'shadow-neumorphic-out-sm border-2 border-coral-300' 
-                    : 'shadow-neumorphic-in-sm'
+                    ? 'bg-card shadow-sm border-2 border-primary/50' 
+                    : 'bg-muted/50'
                 }`}
               >
                 <div className="text-2xl">{achievement.icon}</div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
-                    <h3 className="text-sm font-semibold text-sage-800">{achievement.title}</h3>
+                    <h3 className="text-sm font-semibold text-foreground">{achievement.title}</h3>
                     {achievement.isNew && (
-                      <span className="bg-coral-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                      <span className="bg-primary text-primary-foreground text-xs px-1.5 py-0.5 rounded-full">
                         MỚI!
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-sage-600">{achievement.description}</p>
+                  <p className="text-xs text-muted-foreground">{achievement.description}</p>
                 </div>
                 {achievement.isNew && (
-                  <Trophy className="text-coral-500" size={20} />
+                  <Trophy className="text-primary" size={20} />
                 )}
               </div>
             ))}
@@ -123,8 +124,8 @@ const WorkoutSummary = () => {
         <div className="space-y-2.5">
           <Button
             onClick={handleShare}
-            variant="ghost"
-            className="w-full py-3 rounded-xl text-sm bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm text-sage-700"
+            variant="secondary"
+            className="w-full py-3 rounded-xl text-sm shadow-sm"
           >
             <Share2 size={16} className="mr-2" />
             Chia sẻ thành tích
@@ -132,8 +133,7 @@ const WorkoutSummary = () => {
           
           <Button
             onClick={handleGoHome}
-            variant="ghost"
-            className="w-full bg-sage-500 text-white py-3 rounded-xl text-base font-medium shadow-lg hover:bg-sage-600 active:scale-95"
+            className="w-full py-3 rounded-xl text-base font-medium shadow-lg active:scale-95"
           >
             <Home size={16} className="mr-2" />
             Về Trang chủ

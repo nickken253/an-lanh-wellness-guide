@@ -17,8 +17,8 @@ const BottomNavigation = ({ currentTab }: BottomNavigationProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 px-2 py-3 safe-area-bottom z-50">
-      <div className="w-full max-w-md mx-auto bg-muted/70 backdrop-blur-md rounded-2xl shadow-lg flex justify-around items-center p-1.5">
+    <div className="fixed bottom-0 left-0 right-0 px-4 py-3 safe-area-bottom z-50">
+      <div className="w-full max-w-md mx-auto bg-secondary/80 backdrop-blur-lg rounded-2xl shadow-lg flex justify-around items-center p-1.5">
         {tabs.map((tab) => (
           <div
             key={tab.id}
@@ -27,7 +27,7 @@ const BottomNavigation = ({ currentTab }: BottomNavigationProps) => {
           >
             <div className={`flex items-center justify-center h-8 w-16 rounded-full transition-all duration-300 ${
               currentTab === tab.id
-                ? 'bg-secondary text-secondary-foreground'
+                ? 'bg-primary/90 text-primary-foreground'
                 : 'text-muted-foreground'
             }`}>
               <tab.icon size={22} />

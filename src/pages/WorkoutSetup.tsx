@@ -31,43 +31,44 @@ const WorkoutSetup = () => {
 
   return (
     <div className="min-h-screen bg-black/50 backdrop-blur-sm flex items-center justify-center p-3">
-      <Card className="w-full max-w-sm bg-ivory-50 rounded-3xl shadow-neumorphic-out p-1">
-       <div className="bg-ivory-50 rounded-[22px] p-4">
+      <Card className="w-full max-w-sm bg-card rounded-3xl shadow-lg p-1">
+       <div className="rounded-[22px] p-5">
           {/* Header */}
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-serif font-bold text-sage-800">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-lg font-serif font-bold text-foreground">
               Cài đặt buổi tập
             </h2>
             <Button
               variant="ghost"
+              size="icon"
               onClick={() => navigate(-1)}
-              className="rounded-full p-1.5 h-8 w-8 text-sage-600 bg-ivory-50 shadow-neumorphic-out-sm active:shadow-neumorphic-in-sm"
+              className="rounded-full h-8 w-8 text-muted-foreground bg-muted hover:bg-muted/80"
             >
-              <X size={16} />
+              <X size={18} />
             </Button>
           </div>
 
           {/* Music Selection */}
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="flex items-center space-x-2 mb-3">
-              <Music size={16} className="text-sage-600" />
-              <h3 className="text-sm font-semibold text-sage-800">Âm nhạc</h3>
+              <Music size={18} className="text-muted-foreground" />
+              <h3 className="text-base font-semibold text-foreground">Âm nhạc</h3>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               {musicOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-2.5 cursor-pointer transition-all duration-200 rounded-2xl ${
+                  className={`p-3 cursor-pointer transition-all duration-200 rounded-2xl ${
                     selectedMusic === option.id
-                      ? 'shadow-neumorphic-in-sm bg-ivory-50'
-                      : 'shadow-neumorphic-out-sm bg-ivory-50 hover:shadow-md'
+                      ? 'bg-secondary ring-2 ring-primary'
+                      : 'bg-muted/60 hover:bg-muted'
                   }`}
                   onClick={() => setSelectedMusic(option.id)}
                 >
                   <div className="text-center">
-                    <div className="text-xl mb-0.5">{option.icon}</div>
-                    <p className="font-medium text-sage-800 text-xs">{option.label}</p>
-                    <p className="text-[10px] text-sage-600 leading-tight">{option.description}</p>
+                    <div className="text-2xl mb-1">{option.icon}</div>
+                    <p className="font-medium text-foreground text-sm">{option.label}</p>
+                    <p className="text-xs text-muted-foreground leading-tight">{option.description}</p>
                   </div>
                 </Card>
               ))}
@@ -75,26 +76,26 @@ const WorkoutSetup = () => {
           </div>
 
           {/* Voice Selection */}
-          <div className="mb-4">
+          <div className="mb-6">
             <div className="flex items-center space-x-2 mb-3">
-              <Volume2 size={16} className="text-sage-600" />
-              <h3 className="text-sm font-semibold text-sage-800">Giọng hướng dẫn</h3>
+              <Volume2 size={18} className="text-muted-foreground" />
+              <h3 className="text-base font-semibold text-foreground">Giọng hướng dẫn</h3>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               {voiceOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-2.5 cursor-pointer transition-all duration-200 rounded-2xl ${
+                  className={`p-3 cursor-pointer transition-all duration-200 rounded-2xl ${
                     selectedVoice === option.id
-                      ? 'shadow-neumorphic-in-sm bg-ivory-50'
-                      : 'shadow-neumorphic-out-sm bg-ivory-50 hover:shadow-md'
+                      ? 'bg-secondary ring-2 ring-primary'
+                      : 'bg-muted/60 hover:bg-muted'
                   }`}
                   onClick={() => setSelectedVoice(option.id)}
                 >
                   <div className="text-center">
-                    <div className="text-xl mb-0.5">{option.icon}</div>
-                    <p className="font-medium text-sage-800 text-xs">{option.label}</p>
-                    <p className="text-[10px] text-sage-600 leading-tight">{option.description}</p>
+                    <div className="text-2xl mb-1">{option.icon}</div>
+                    <p className="font-medium text-foreground text-sm">{option.label}</p>
+                    <p className="text-xs text-muted-foreground leading-tight">{option.description}</p>
                   </div>
                 </Card>
               ))}
@@ -102,16 +103,15 @@ const WorkoutSetup = () => {
           </div>
 
           {/* Skip Warmup Option */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+          <div className="mb-8">
+            <div className="flex items-center justify-between p-3 bg-muted/60 rounded-2xl">
               <div>
-                <p className="text-sm font-medium text-sage-800">Bỏ qua phần khởi động</p>
-                <p className="text-xs text-sage-600">Chuyển thẳng vào bài tập chính</p>
+                <p className="text-sm font-medium text-foreground">Bỏ qua phần khởi động</p>
+                <p className="text-xs text-muted-foreground">Chuyển thẳng vào bài tập chính</p>
               </div>
               <Switch
                 checked={skipWarmup}
                 onCheckedChange={setSkipWarmup}
-                className="shadow-neumorphic-in-sm data-[state=checked]:bg-sage-500"
               />
             </div>
           </div>
@@ -119,8 +119,8 @@ const WorkoutSetup = () => {
           {/* Start Button */}
           <Button
             onClick={handleStart}
-            variant="ghost"
-            className="w-full bg-sage-500 text-ivory-50 font-medium py-3 text-base rounded-xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
+            size="lg"
+            className="w-full font-medium text-base rounded-xl shadow-lg active:scale-95 transition-all"
           >
             Sẵn sàng! 🚀
           </Button>

@@ -7,16 +7,16 @@
 
 @layer base {
   :root {
-    --background: 84 22% 94%; /* sage-100 */
+    --background: 84 22% 96%; /* Lighter sage-100 for better contrast */
     --foreground: 210 11% 15%; /* charcoal gray */
 
-    --card: 60 9% 98%; /* ivory-50 */
+    --card: 60 9% 99%; /* ivory-50 but almost white */
     --card-foreground: 210 11% 15%;
 
-    --popover: 60 9% 98%;
+    --popover: 60 9% 99%;
     --popover-foreground: 210 11% 15%;
 
-    --primary: 84 22% 50%; /* sage-600 for better contrast */
+    --primary: 84 30% 50%; /* A bit more saturated sage for primary actions */
     --primary-foreground: 60 9% 98%;
 
     --secondary: 84 22% 90%; /* sage-200 - Tonal secondary */
@@ -28,44 +28,44 @@
     --accent: 39 77% 64%; /* sandy-300 */
     --accent-foreground: 210 11% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%; /* Adjusted for better visibility */
     --destructive-foreground: 60 9% 98%;
 
-    --border: 84 22% 80%; /* sage-200, slightly darker */
-    --input: 84 22% 80%; /* sage-200, slightly darker */
-    --ring: 84 22% 59%; /* sage-500 */
+    --border: 84 22% 88%; /* sage-200, slightly darker for definition */
+    --input: 84 22% 88%; /* sage-200, slightly darker */
+    --ring: 84 30% 50%; /* primary */
 
     --radius: 16px; /* M3 uses more rounded corners */
   }
 
   .dark {
-    --background: 84 15% 20%;
+    --background: 84 10% 15%; /* Darker, less saturated sage */
     --foreground: 60 9% 98%;
 
-    --card: 84 15% 25%;
+    --card: 84 10% 20%; /* Slightly lighter than background */
     --card-foreground: 60 9% 98%;
 
-    --popover: 210 11% 15%;
+    --popover: 84 10% 20%;
     --popover-foreground: 60 9% 98%;
 
-    --primary: 84 22% 59%; /* sage-500 */
+    --primary: 84 25% 55%; /* Lighter sage for dark mode */
     --primary-foreground: 210 11% 15%;
 
-    --secondary: 84 15% 25%;
+    --secondary: 84 10% 25%;
     --secondary-foreground: 60 9% 98%;
 
-    --muted: 84 15% 20%;
+    --muted: 84 10% 20%;
     --muted-foreground: 84 15% 65%;
 
-    --accent: 39 77% 64%; /* sandy-300 */
+    --accent: 39 77% 64%;
     --accent-foreground: 60 9% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 40%;
     --destructive-foreground: 60 9% 98%;
 
-    --border: 84 15% 30%;
-    --input: 84 15% 30%;
-    --ring: 84 22% 59%;
+    --border: 84 10% 30%;
+    --input: 84 10% 30%;
+    --ring: 84 25% 55%;
   }
 }
 
