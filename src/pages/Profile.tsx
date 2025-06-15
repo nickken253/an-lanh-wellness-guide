@@ -8,11 +8,12 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import BottomNavigation from '@/components/BottomNavigation';
 import { useNavigate } from 'react-router-dom';
 import { SettingsDialog } from '@/components/SettingsDialog';
-import { UserRoundCog } from 'lucide-react';
+import { Edit, UserRoundCog } from 'lucide-react';
+import { EditProfileSheet } from '@/components/EditProfileSheet';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [user] = useState({
+  const [user, setUser] = useState({
     name: 'An Bùi',
     email: 'an.bui@example.com',
     level: 8,
@@ -20,8 +21,16 @@ const Profile = () => {
     xpToNext: 2500,
     totalMinutes: 420,
     totalSessions: 28,
-    joinDate: '2024-01-01'
+    joinDate: '2024-01-01',
+    height: 175,
+    weight: 68,
+    gender: 'male',
+    dob: '1995-05-20',
   });
+
+  const handleProfileUpdate = (newUserData: any) => {
+    setUser(prevUser => ({ ...prevUser, ...newUserData }));
+  };
 
   const badges = [
     { id: 1, name: 'Người mới', icon: '🌱', description: 'Hoàn thành buổi tập đầu tiên', earned: true },
@@ -58,7 +67,14 @@ const Profile = () => {
               </AvatarFallback>
             </Avatar>
             <div className="flex-1">
-              <h2 className="text-xl font-serif font-bold text-foreground">{user.name}</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-serif font-bold text-foreground">{user.name}</h2>
+                <EditProfileSheet user={user} onSave={handleProfileUpdate}>
+                  <Button variant="ghost" size="icon" className="h-6 w-6 rounded-full">
+                    <Edit className="h-3 w-3" />
+                  </Button>
+                </EditProfileSheet>
+              </div>
               <p className="text-muted-foreground text-sm">{user.email}</p>
               <div className="flex items-center space-x-2 mt-2">
                 <Badge variant="secondary">Level {user.level}</Badge>

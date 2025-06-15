@@ -3,12 +3,15 @@ import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Bell, Globe } from "lucide-react";
 import * as React from "react";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
 
 export function SettingsDialog({ children }: { children: React.ReactNode }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const [notifications, setNotifications] = React.useState(true);
+  const [language, setLanguage] = React.useState('vi');
 
   React.useEffect(() => {
     setMounted(true);
@@ -40,6 +43,43 @@ export function SettingsDialog({ children }: { children: React.ReactNode }) {
             checked={theme === 'dark'}
             onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
           />
+        </div>
+        <hr className="my-2 border-border" />
+        <div className="flex items-center space-x-2 py-4">
+          <div className="flex-1">
+            <Label htmlFor="notifications" className="flex items-center text-foreground cursor-pointer">
+              <Bell className="mr-2 h-5 w-5" />
+              Thông báo
+            </Label>
+            <p className="text-xs text-muted-foreground mt-1">
+              Nhận thông báo về lịch tập và cập nhật.
+            </p>
+          </div>
+          <Switch
+            id="notifications"
+            checked={notifications}
+            onCheckedChange={setNotifications}
+          />
+        </div>
+        <div className="flex items-center space-x-2 py-4">
+          <div className="flex-1">
+            <Label htmlFor="language" className="flex items-center text-foreground">
+              <Globe className="mr-2 h-5 w-5" />
+              Ngôn ngữ
+            </Label>
+            <p className="text-xs text-muted-foreground mt-1">
+              Chọn ngôn ngữ hiển thị cho ứng dụng.
+            </p>
+          </div>
+          <Select value={language} onValueChange={setLanguage}>
+            <SelectTrigger className="w-[120px]">
+              <SelectValue placeholder="Ngôn ngữ" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="vi">Tiếng Việt</SelectItem>
+              <SelectItem value="en">English</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </DialogContent>
     </Dialog>
