@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import BottomNavigation from '@/components/BottomNavigation';
 import { useNavigate } from 'react-router-dom';
 
@@ -105,8 +105,8 @@ const Profile = () => {
           <h3 className="font-serif font-bold text-sage-800 mb-4">Bộ sưu tập huy hiệu</h3>
           <div className="grid grid-cols-3 gap-4">
             {badges.map((badge) => (
-              <Popover key={badge.id}>
-                <PopoverTrigger asChild>
+              <Dialog key={badge.id}>
+                <DialogTrigger asChild>
                   <button
                     className={`text-center p-3 rounded-xl transition-all cursor-pointer ${
                       badge.earned
@@ -121,24 +121,24 @@ const Profile = () => {
                       {badge.name}
                     </h4>
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="w-64 p-4 bg-white shadow-lg rounded-xl border border-sage-200">
-                  <div className="text-center">
-                    <div className="text-4xl mb-3">{badge.icon}</div>
-                    <h3 className="font-serif font-bold text-sage-800 mb-2">{badge.name}</h3>
-                    <p className="text-sm text-sage-600 leading-relaxed">{badge.description}</p>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <div className="text-center p-4">
+                    <div className="text-6xl mb-4">{badge.icon}</div>
+                    <h3 className="text-xl font-serif font-bold text-sage-800 mb-3">{badge.name}</h3>
+                    <p className="text-sage-600 leading-relaxed mb-4">{badge.description}</p>
                     {badge.earned ? (
-                      <div className="mt-3 px-3 py-1 bg-sage-100 text-sage-700 text-xs rounded-full inline-block">
+                      <div className="px-4 py-2 bg-sage-100 text-sage-700 text-sm rounded-full inline-block">
                         ✅ Đã đạt được
                       </div>
                     ) : (
-                      <div className="mt-3 px-3 py-1 bg-gray-100 text-gray-500 text-xs rounded-full inline-block">
+                      <div className="px-4 py-2 bg-gray-100 text-gray-500 text-sm rounded-full inline-block">
                         🔒 Chưa mở khóa
                       </div>
                     )}
                   </div>
-                </PopoverContent>
-              </Popover>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </Card>
