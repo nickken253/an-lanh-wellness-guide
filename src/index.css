@@ -1,49 +1,41 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* An Lành Design System */
+/* An Lành Design System - Material 3 Inspired */
 
 @layer base {
   :root {
     --background: 60 9% 98%; /* ivory-50 */
     --foreground: 210 11% 15%; /* charcoal gray */
 
-    --card: 0 0% 100%;
+    --card: 60 9% 98%;
     --card-foreground: 210 11% 15%;
 
-    --popover: 0 0% 100%;
+    --popover: 60 9% 98%;
     --popover-foreground: 210 11% 15%;
 
-    --primary: 84 22% 59%; /* sage-500 */
+    --primary: 84 22% 50%; /* sage-600 for better contrast */
     --primary-foreground: 60 9% 98%;
 
-    --secondary: 39 77% 64%; /* sandy-300 */
-    --secondary-foreground: 210 11% 15%;
+    --secondary: 84 22% 90%; /* sage-200 - Tonal secondary */
+    --secondary-foreground: 84 22% 30%; /* sage-800 */
 
-    --muted: 39 77% 94%; /* sandy-50 */
+    --muted: 84 22% 94%; /* sage-100 - for subtle backgrounds */
     --muted-foreground: 84 15% 55%;
 
-    --accent: 9 71% 69%; /* coral-500 */
-    --accent-foreground: 60 9% 98%;
+    --accent: 39 77% 64%; /* sandy-300 */
+    --accent-foreground: 210 11% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 60 9% 98%;
 
     --border: 84 22% 89%; /* sage-200 */
     --input: 84 22% 89%;
-    --ring: 84 22% 59%;
+    --ring: 84 22% 59%; /* sage-500 */
 
-    --radius: 12px;
-
-    --sidebar-background: 60 9% 98%;
-    --sidebar-foreground: 210 11% 15%;
-    --sidebar-primary: 84 22% 59%;
-    --sidebar-primary-foreground: 60 9% 98%;
-    --sidebar-accent: 84 22% 94%;
-    --sidebar-accent-foreground: 210 11% 15%;
-    --sidebar-border: 84 22% 89%;
-    --sidebar-ring: 84 22% 59%;
+    --radius: 16px; /* M3 uses more rounded corners */
   }
 
   .dark {
@@ -56,33 +48,24 @@
     --popover: 210 11% 15%;
     --popover-foreground: 60 9% 98%;
 
-    --primary: 84 22% 59%;
+    --primary: 84 22% 59%; /* sage-500 */
     --primary-foreground: 210 11% 15%;
 
     --secondary: 84 15% 25%;
     --secondary-foreground: 60 9% 98%;
 
-    --muted: 84 15% 25%;
+    --muted: 84 15% 20%;
     --muted-foreground: 84 15% 65%;
 
-    --accent: 9 71% 69%;
-    --accent-foreground: 210 11% 15%;
+    --accent: 39 77% 64%; /* sandy-300 */
+    --accent-foreground: 60 9% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 60 9% 98%;
 
     --border: 84 15% 25%;
     --input: 84 15% 25%;
     --ring: 84 22% 59%;
-
-    --sidebar-background: 210 11% 15%;
-    --sidebar-foreground: 60 9% 98%;
-    --sidebar-primary: 84 22% 59%;
-    --sidebar-primary-foreground: 210 11% 15%;
-    --sidebar-accent: 84 15% 25%;
-    --sidebar-accent-foreground: 60 9% 98%;
-    --sidebar-border: 84 15% 25%;
-    --sidebar-ring: 84 22% 59%;
   }
 }
 
@@ -107,30 +90,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-sage-100;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-sage-300 rounded-full;
+  @apply bg-border rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-sage-400;
-}
-
-/* Smooth transitions */
-* {
-  transition: all 0.2s ease-in-out;
-}
-
-/* Custom utility classes */
-.glass-effect {
-  background: rgba(246, 247, 244, 0.5); /* sage-50 at 50% opacity */
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(163, 177, 138, 0.1); /* sage-500 at 10% opacity */
-}
-
-.text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @apply bg-primary/50;
 }

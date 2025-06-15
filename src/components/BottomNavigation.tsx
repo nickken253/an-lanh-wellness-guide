@@ -1,6 +1,5 @@
 
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
 import { Home, Search, History, User } from 'lucide-react';
 
 interface BottomNavigationProps {
@@ -18,22 +17,27 @@ const BottomNavigation = ({ currentTab }: BottomNavigationProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 px-4 py-3 safe-area-bottom z-50">
-      <div className="w-full max-w-md mx-auto glass-effect rounded-3xl shadow-lg shadow-sage-200/20 flex justify-around items-center p-1.5 space-x-1.5">
+    <div className="fixed bottom-0 left-0 right-0 px-2 py-3 safe-area-bottom z-50">
+      <div className="w-full max-w-md mx-auto bg-muted/70 backdrop-blur-md rounded-2xl shadow-lg flex justify-around items-center p-1.5">
         {tabs.map((tab) => (
-          <Button
+          <div
             key={tab.id}
-            variant="ghost"
             onClick={() => navigate(tab.path)}
-            className={`flex-1 flex flex-col items-center justify-center h-14 rounded-2xl transition-all duration-200 ${
-              currentTab === tab.id
-                ? 'bg-white/70 shadow-neumorphic-in-sm text-sage-700'
-                : 'text-sage-600 hover:bg-white/50'
-            }`}
+            className="flex-1 flex flex-col items-center justify-center gap-1 cursor-pointer group rounded-xl py-1"
           >
-            <tab.icon size={20} />
-            <span className="text-[11px] font-medium mt-1">{tab.label}</span>
-          </Button>
+            <div className={`flex items-center justify-center h-8 w-16 rounded-full transition-all duration-300 ${
+              currentTab === tab.id
+                ? 'bg-secondary text-secondary-foreground'
+                : 'text-muted-foreground'
+            }`}>
+              <tab.icon size={22} />
+            </div>
+            <span className={`text-xs font-medium transition-all duration-300 ${
+              currentTab === tab.id
+                ? 'text-primary'
+                : 'text-muted-foreground'
+            }`}>{tab.label}</span>
+          </div>
         ))}
       </div>
     </div>
