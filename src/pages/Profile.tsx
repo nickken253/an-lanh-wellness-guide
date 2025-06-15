@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import BottomNavigation from '@/components/BottomNavigation';
 import { useNavigate } from 'react-router-dom';
 
@@ -104,26 +105,40 @@ const Profile = () => {
           <h3 className="font-serif font-bold text-sage-800 mb-4">Bộ sưu tập huy hiệu</h3>
           <div className="grid grid-cols-3 gap-4">
             {badges.map((badge) => (
-              <div
-                key={badge.id}
-                className={`text-center p-3 rounded-xl transition-all ${
-                  badge.earned
-                    ? 'bg-sage-50 border-2 border-sage-200'
-                    : 'bg-gray-50 border-2 border-gray-200 opacity-50'
-                }`}
-              >
-                <div className="text-4xl mb-2">{badge.icon}</div>
-                <h4 className={`text-xs font-semibold mb-1 ${
-                  badge.earned ? 'text-sage-800' : 'text-gray-400'
-                }`}>
-                  {badge.name}
-                </h4>
-                <p className={`text-[10px] leading-tight ${
-                  badge.earned ? 'text-sage-600' : 'text-gray-400'
-                }`}>
-                  {badge.description}
-                </p>
-              </div>
+              <Popover key={badge.id}>
+                <PopoverTrigger asChild>
+                  <button
+                    className={`text-center p-3 rounded-xl transition-all cursor-pointer ${
+                      badge.earned
+                        ? 'bg-sage-50 border-2 border-sage-200 hover:bg-sage-100'
+                        : 'bg-gray-50 border-2 border-gray-200 opacity-50'
+                    }`}
+                  >
+                    <div className="text-4xl mb-2">{badge.icon}</div>
+                    <h4 className={`text-xs font-semibold ${
+                      badge.earned ? 'text-sage-800' : 'text-gray-400'
+                    }`}>
+                      {badge.name}
+                    </h4>
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent className="w-64 p-4 bg-white shadow-lg rounded-xl border border-sage-200">
+                  <div className="text-center">
+                    <div className="text-4xl mb-3">{badge.icon}</div>
+                    <h3 className="font-serif font-bold text-sage-800 mb-2">{badge.name}</h3>
+                    <p className="text-sm text-sage-600 leading-relaxed">{badge.description}</p>
+                    {badge.earned ? (
+                      <div className="mt-3 px-3 py-1 bg-sage-100 text-sage-700 text-xs rounded-full inline-block">
+                        ✅ Đã đạt được
+                      </div>
+                    ) : (
+                      <div className="mt-3 px-3 py-1 bg-gray-100 text-gray-500 text-xs rounded-full inline-block">
+                        🔒 Chưa mở khóa
+                      </div>
+                    )}
+                  </div>
+                </PopoverContent>
+              </Popover>
             ))}
           </div>
         </Card>
