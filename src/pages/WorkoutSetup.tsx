@@ -30,34 +30,34 @@ const WorkoutSetup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black/50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-white rounded-2xl shadow-2xl">
-        <div className="p-6">
+    <div className="min-h-screen bg-black/50 flex items-center justify-center p-3">
+      <Card className="w-full max-w-sm bg-white rounded-xl shadow-xl">
+        <div className="p-4">
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-serif font-bold text-sage-800">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-serif font-bold text-sage-800">
               Cài đặt buổi tập
             </h2>
             <Button
               variant="ghost"
               onClick={() => navigate(-1)}
-              className="rounded-full p-2"
+              className="rounded-full p-1.5 h-8 w-8"
             >
-              <X size={20} />
+              <X size={16} />
             </Button>
           </div>
 
           {/* Music Selection */}
-          <div className="mb-6">
-            <div className="flex items-center space-x-2 mb-4">
-              <Music size={20} className="text-sage-600" />
-              <h3 className="font-semibold text-sage-800">Âm nhạc</h3>
+          <div className="mb-4">
+            <div className="flex items-center space-x-2 mb-3">
+              <Music size={16} className="text-sage-600" />
+              <h3 className="text-sm font-semibold text-sage-800">Âm nhạc</h3>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2">
               {musicOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-3 cursor-pointer transition-all duration-200 border-2 ${
+                  className={`p-2.5 cursor-pointer transition-all duration-200 border-2 ${
                     selectedMusic === option.id
                       ? 'border-sage-500 bg-sage-50'
                       : 'border-sage-200 hover:border-sage-300'
@@ -65,9 +65,9 @@ const WorkoutSetup = () => {
                   onClick={() => setSelectedMusic(option.id)}
                 >
                   <div className="text-center">
-                    <div className="text-2xl mb-1">{option.icon}</div>
-                    <p className="font-medium text-sage-800 text-sm">{option.label}</p>
-                    <p className="text-xs text-sage-600">{option.description}</p>
+                    <div className="text-xl mb-0.5">{option.icon}</div>
+                    <p className="font-medium text-sage-800 text-xs">{option.label}</p>
+                    <p className="text-[10px] text-sage-600 leading-tight">{option.description}</p>
                   </div>
                 </Card>
               ))}
@@ -75,16 +75,16 @@ const WorkoutSetup = () => {
           </div>
 
           {/* Voice Selection */}
-          <div className="mb-6">
-            <div className="flex items-center space-x-2 mb-4">
-              <Volume2 size={20} className="text-sage-600" />
-              <h3 className="font-semibold text-sage-800">Giọng hướng dẫn</h3>
+          <div className="mb-4">
+            <div className="flex items-center space-x-2 mb-3">
+              <Volume2 size={16} className="text-sage-600" />
+              <h3 className="text-sm font-semibold text-sage-800">Giọng hướng dẫn</h3>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2">
               {voiceOptions.map((option) => (
                 <Card
                   key={option.id}
-                  className={`p-3 cursor-pointer transition-all duration-200 border-2 ${
+                  className={`p-2.5 cursor-pointer transition-all duration-200 border-2 ${
                     selectedVoice === option.id
                       ? 'border-sage-500 bg-sage-50'
                       : 'border-sage-200 hover:border-sage-300'
@@ -92,9 +92,9 @@ const WorkoutSetup = () => {
                   onClick={() => setSelectedVoice(option.id)}
                 >
                   <div className="text-center">
-                    <div className="text-2xl mb-1">{option.icon}</div>
-                    <p className="font-medium text-sage-800 text-sm">{option.label}</p>
-                    <p className="text-xs text-sage-600">{option.description}</p>
+                    <div className="text-xl mb-0.5">{option.icon}</div>
+                    <p className="font-medium text-sage-800 text-xs">{option.label}</p>
+                    <p className="text-[10px] text-sage-600 leading-tight">{option.description}</p>
                   </div>
                 </Card>
               ))}
@@ -102,11 +102,11 @@ const WorkoutSetup = () => {
           </div>
 
           {/* Skip Warmup Option */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between p-4 bg-sage-50 rounded-xl">
+          <div className="mb-6">
+            <div className="flex items-center justify-between p-3 bg-sage-50 rounded-lg">
               <div>
-                <p className="font-medium text-sage-800">Bỏ qua phần khởi động</p>
-                <p className="text-sm text-sage-600">Chuyển thẳng vào bài tập chính</p>
+                <p className="text-sm font-medium text-sage-800">Bỏ qua phần khởi động</p>
+                <p className="text-xs text-sage-600">Chuyển thẳng vào bài tập chính</p>
               </div>
               <Switch
                 checked={skipWarmup}
@@ -118,7 +118,7 @@ const WorkoutSetup = () => {
           {/* Start Button */}
           <Button
             onClick={handleStart}
-            className="w-full gradient-sage text-white font-medium py-4 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="w-full gradient-sage text-white font-medium py-3 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           >
             Sẵn sàng! 🚀
           </Button>

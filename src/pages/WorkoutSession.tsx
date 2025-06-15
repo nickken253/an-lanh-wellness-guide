@@ -101,20 +101,20 @@ const WorkoutSession = () => {
 
   if (isResting) {
     return (
-      <div className="min-h-screen bg-ivory-50 flex items-center justify-center p-6">
-        <div className="text-center">
-          <div className="text-8xl font-bold text-sage-800 mb-4">
+      <div className="min-h-screen bg-ivory-50 flex items-center justify-center p-4">
+        <div className="text-center max-w-xs mx-auto">
+          <div className="text-6xl font-bold text-sage-800 mb-3">
             {timeRemaining}
           </div>
-          <h2 className="text-2xl font-serif font-bold text-sage-800 mb-4">
+          <h2 className="text-xl font-serif font-bold text-sage-800 mb-3">
             Nghỉ ngơi
           </h2>
-          <p className="text-sage-600 mb-8">Chuẩn bị cho động tác tiếp theo</p>
+          <p className="text-sage-600 mb-6 text-sm">Chuẩn bị cho động tác tiếp theo</p>
           
-          <Card className="p-6 bg-white shadow-lg rounded-2xl max-w-sm mx-auto">
-            <div className="text-4xl mb-3">{poses[currentPose].image}</div>
-            <h3 className="font-semibold text-sage-800 mb-1">Động tác tiếp theo</h3>
-            <p className="text-sage-600">{poses[currentPose].name}</p>
+          <Card className="p-4 bg-white shadow-lg rounded-xl">
+            <div className="text-3xl mb-2">{poses[currentPose].image}</div>
+            <h3 className="text-sm font-semibold text-sage-800 mb-1">Động tác tiếp theo</h3>
+            <p className="text-xs text-sage-600">{poses[currentPose].name}</p>
           </Card>
         </div>
       </div>
@@ -124,60 +124,60 @@ const WorkoutSession = () => {
   return (
     <div className="min-h-screen bg-ivory-50 relative">
       {/* Top Bar */}
-      <div className="p-4 bg-white shadow-sm">
+      <div className="p-3 bg-white shadow-sm">
         <div className="flex items-center justify-between mb-2">
-          <h1 className="text-lg font-serif font-bold text-sage-800">
+          <h1 className="text-sm font-serif font-bold text-sage-800 flex-1 truncate">
             {poses[currentPose].name}
           </h1>
-          <div className="text-2xl font-bold text-sage-800">
+          <div className="text-lg font-bold text-sage-800 ml-2">
             {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
           </div>
         </div>
-        <Progress value={progressPercentage} className="h-2" />
+        <Progress value={progressPercentage} className="h-1.5" />
       </div>
 
       {/* Main Video Area */}
-      <div className="relative h-96 bg-gradient-to-br from-sage-200 to-sage-300 m-4 rounded-2xl overflow-hidden">
+      <div className="relative h-80 bg-gradient-to-br from-sage-200 to-sage-300 m-3 rounded-xl overflow-hidden">
         {/* Simulated camera view */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-6xl opacity-50">{poses[currentPose].image}</div>
+          <div className="text-4xl opacity-50">{poses[currentPose].image}</div>
         </div>
         
         {/* AI Skeleton Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-32 h-48 border-2 border-sage-600 border-dashed rounded-full opacity-30"></div>
+          <div className="w-24 h-36 border-2 border-sage-600 border-dashed rounded-full opacity-30"></div>
         </div>
 
         {/* Instructor Video (Small) */}
-        <div className="absolute top-4 right-4 w-24 h-32 bg-white rounded-xl shadow-lg flex items-center justify-center">
-          <div className="text-3xl">{poses[currentPose].image}</div>
+        <div className="absolute top-3 right-3 w-16 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center">
+          <div className="text-xl">{poses[currentPose].image}</div>
         </div>
       </div>
 
       {/* AI Feedback */}
-      <div className="px-4 mb-4">
+      <div className="px-3 mb-3">
         {aiMessage && (
-          <Card className="p-3 bg-sage-100 border-sage-300 animate-fade-in">
-            <p className="text-sage-800 text-center font-medium">💬 {aiMessage}</p>
+          <Card className="p-2.5 bg-sage-100 border-sage-300 animate-fade-in">
+            <p className="text-sage-800 text-center text-sm font-medium">💬 {aiMessage}</p>
           </Card>
         )}
       </div>
 
       {/* Controls */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 bg-white border-t border-sage-200">
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-sage-200">
         <div className="flex justify-center space-x-4">
           <Button
             onClick={handlePause}
-            className="gradient-sage text-white px-8 py-4 rounded-2xl"
+            className="gradient-sage text-white px-6 py-3 rounded-xl"
           >
-            <Pause size={24} />
+            <Pause size={20} />
           </Button>
           <Button
             onClick={handleStop}
             variant="outline"
-            className="border-coral-300 text-coral-600 px-8 py-4 rounded-2xl"
+            className="border-coral-300 text-coral-600 px-6 py-3 rounded-xl"
           >
-            <Square size={24} />
+            <Square size={20} />
           </Button>
         </div>
       </div>
@@ -185,23 +185,23 @@ const WorkoutSession = () => {
       {/* Pause Menu */}
       {showPauseMenu && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <Card className="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6">
-            <h3 className="text-xl font-serif font-bold text-sage-800 mb-6 text-center">
+          <Card className="w-full max-w-xs bg-white rounded-xl shadow-2xl p-4">
+            <h3 className="text-lg font-serif font-bold text-sage-800 mb-4 text-center">
               Tạm dừng
             </h3>
             
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <Button
                 onClick={handleResume}
-                className="w-full gradient-sage text-white py-3 rounded-xl text-lg"
+                className="w-full gradient-sage text-white py-2.5 rounded-lg text-sm"
               >
-                <Play size={20} className="mr-2" />
+                <Play size={16} className="mr-2" />
                 Tiếp tục
               </Button>
               
               <Button
                 variant="outline"
-                className="w-full border-sage-300 text-sage-700 py-3 rounded-xl"
+                className="w-full border-sage-300 text-sage-700 py-2.5 rounded-lg text-sm"
               >
                 Cài đặt
               </Button>
@@ -209,7 +209,7 @@ const WorkoutSession = () => {
               <Button
                 onClick={handleStop}
                 variant="outline"
-                className="w-full border-coral-300 text-coral-600 py-3 rounded-xl"
+                className="w-full border-coral-300 text-coral-600 py-2.5 rounded-lg text-sm"
               >
                 Kết thúc buổi tập
               </Button>
