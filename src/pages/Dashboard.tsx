@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import BottomNavigation from '@/components/BottomNavigation';
-import { Home, Search, History, Profile } from 'lucide-react';
+import { Home, Search, History, User } from 'lucide-react';
 
 const Dashboard = () => {
   const navigate = useNavigate();

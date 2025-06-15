@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Home, Search, History, Profile } from 'lucide-react';
+import { Home, Search, History, User } from 'lucide-react';
 
 interface BottomNavigationProps {
   currentTab: 'home' | 'explore' | 'history' | 'profile';
@@ -14,7 +14,7 @@ const BottomNavigation = ({ currentTab }: BottomNavigationProps) => {
     { id: 'home', label: 'Trang chủ', icon: Home, path: '/dashboard' },
     { id: 'explore', label: 'Khám phá', icon: Search, path: '/explore' },
     { id: 'history', label: 'Lịch sử', icon: History, path: '/history' },
-    { id: 'profile', label: 'Hồ sơ', icon: Profile, path: '/profile' },
+    { id: 'profile', label: 'Hồ sơ', icon: User, path: '/profile' },
   ];
 
   return (
