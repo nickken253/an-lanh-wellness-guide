@@ -38,7 +38,7 @@ const Profile = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20 flex flex-col items-center">
+    <div className="min-h-screen bg-background pb-[var(--bottom-nav-height)] flex flex-col items-center">
       <div className="p-6 w-full max-w-4xl">
         {/* Header */}
         <div className="mb-6">
