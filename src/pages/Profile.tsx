@@ -51,8 +51,8 @@ const Profile = () => {
   const xpProgress = (user.xp / user.xpToNext) * 100;
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <div className="p-6">
+    <div className="min-h-screen bg-background pb-20 flex flex-col items-center">
+      <div className="p-6 w-full max-w-4xl">
         {/* Header */}
         <div className="mb-6">
           <h1 className="text-2xl font-serif font-bold text-foreground">Hồ sơ cá nhân</h1>
@@ -120,7 +120,7 @@ const Profile = () => {
         {/* Badges Collection */}
         <Card className="p-6 mb-6 rounded-3xl shadow-md">
           <h3 className="font-serif font-bold text-foreground mb-4">Bộ sưu tập huy hiệu</h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {badges.map((badge) => (
               <Dialog key={badge.id}>
                 <DialogTrigger asChild>

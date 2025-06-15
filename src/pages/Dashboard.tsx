@@ -46,8 +46,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <div className="p-6">
+    <div className="min-h-screen bg-background pb-20 flex flex-col items-center">
+      <div className="p-6 w-full max-w-4xl">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-foreground mb-2">
@@ -137,7 +137,7 @@ const Dashboard = () => {
           <h2 className="text-lg font-bold text-foreground mb-4">
             Khám phá thêm
           </h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {recommendations.map((item, index) => (
               <Card 
                 key={index} 

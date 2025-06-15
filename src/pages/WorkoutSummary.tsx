@@ -39,7 +39,7 @@ const WorkoutSummary = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-3">
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-sm md:max-w-md">
         {/* Success Animation Area */}
         <div className="text-center mb-6">
           <div className="text-4xl mb-3 animate-bounce">🎉</div>
