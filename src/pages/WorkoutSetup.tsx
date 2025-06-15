@@ -25,6 +25,7 @@ const WorkoutSetup = () => {
   ];
 
   const handleStart = () => {
+    console.log('Starting workout with settings:', { selectedMusic, selectedVoice, skipWarmup });
     navigate('/workout-session');
   };
 
