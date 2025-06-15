@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -31,67 +32,67 @@ const WorkoutDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivory-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="relative">
         <div className="absolute top-4 left-4 z-10">
           <Button
             variant="ghost"
             onClick={() => navigate(-1)}
-            className="rounded-full bg-ivory-50/80 backdrop-blur-sm shadow-neumorphic-out-sm h-10 w-10 p-2"
+            className="rounded-full bg-background/80 backdrop-blur-sm shadow-soft h-10 w-10 p-2"
           >
             <ArrowLeft size={20} />
           </Button>
         </div>
         
         {/* Hero Image */}
-        <div className="h-48 bg-gradient-to-br from-sage-200 to-sage-300 flex items-center justify-center">
+        <div className="h-48 bg-secondary/50 flex items-center justify-center">
           <div className="text-5xl">{workout.image}</div>
         </div>
       </div>
 
       <div className="p-4 -mt-8 relative z-10">
         {/* Main Info Card */}
-        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
-          <h1 className="text-xl font-serif font-bold text-sage-800 mb-2">
+        <Card className="p-4 bg-card shadow-soft rounded-3xl mb-4">
+          <h1 className="text-xl font-serif font-bold text-foreground mb-2">
             {workout.title}
           </h1>
           
           <div className="flex items-center space-x-2 mb-3 flex-wrap gap-y-1">
-            <Badge variant="secondary" className="bg-sage-100 text-sage-700 text-xs">
+            <Badge variant="secondary">
               <Clock size={12} className="mr-1" />
               {workout.duration}
             </Badge>
-            <Badge variant="secondary" className="bg-sandy-100 text-sandy-700 text-xs">
+            <Badge variant="secondary">
               <TrendingUp size={12} className="mr-1" />
               {workout.level}
             </Badge>
-            <Badge variant="secondary" className="bg-coral-100 text-coral-700 text-xs">
+            <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
               <Flame size={12} className="mr-1" />
               {workout.calories}
             </Badge>
           </div>
           
-          <p className="text-sage-600 leading-relaxed text-sm">
+          <p className="text-muted-foreground leading-relaxed text-sm">
             {workout.description}
           </p>
         </Card>
 
         {/* Poses List */}
-        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-4">
-          <h2 className="text-base font-serif font-bold text-sage-800 mb-3">
+        <Card className="p-4 bg-card shadow-soft rounded-3xl mb-4">
+          <h2 className="text-base font-serif font-bold text-foreground mb-3">
             Các tư thế trong bài tập
           </h2>
           
           <div className="space-y-2.5">
             {workout.poses.map((pose, index) => (
-              <div key={index} className="flex items-center space-x-3 p-2.5 bg-ivory-50 rounded-2xl shadow-neumorphic-in-sm">
+              <div key={index} className="flex items-center space-x-3 p-2.5 bg-background rounded-2xl shadow-soft-in">
                 <div className="text-xl">{pose.image}</div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-semibold text-sage-800 truncate">{pose.name}</h3>
-                  <p className="text-xs text-sage-600 italic truncate">{pose.sanskrit}</p>
+                  <h3 className="text-sm font-semibold text-foreground truncate">{pose.name}</h3>
+                  <p className="text-xs text-muted-foreground italic truncate">{pose.sanskrit}</p>
                 </div>
-                <div className="text-xs text-sage-600 font-medium whitespace-nowrap">
+                <div className="text-xs text-muted-foreground font-medium whitespace-nowrap">
                   {pose.duration}
                 </div>
               </div>
@@ -100,38 +101,37 @@ const WorkoutDetails = () => {
         </Card>
 
         {/* Benefits */}
-        <Card className="p-4 bg-ivory-50 shadow-neumorphic-out rounded-3xl mb-24">
-          <h2 className="text-base font-serif font-bold text-sage-800 mb-3">
+        <Card className="p-4 bg-card shadow-soft rounded-3xl mb-24">
+          <h2 className="text-base font-serif font-bold text-foreground mb-3">
             Lợi ích của bài tập
           </h2>
           
           <div className="grid grid-cols-2 gap-3">
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <div className="text-center p-3 bg-background rounded-2xl shadow-soft">
               <div className="text-xl mb-1">💪</div>
-              <p className="text-xs font-medium text-sage-800">Tăng sức mạnh</p>
+              <p className="text-xs font-medium text-foreground">Tăng sức mạnh</p>
             </div>
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <div className="text-center p-3 bg-background rounded-2xl shadow-soft">
               <div className="text-xl mb-1">🤸‍♀️</div>
-              <p className="text-xs font-medium text-sage-800">Cải thiện độ dẻo</p>
+              <p className="text-xs font-medium text-foreground">Cải thiện độ dẻo</p>
             </div>
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <div className="text-center p-3 bg-background rounded-2xl shadow-soft">
               <div className="text-xl mb-1">😌</div>
-              <p className="text-xs font-medium text-sage-800">Giảm stress</p>
+              <p className="text-xs font-medium text-foreground">Giảm stress</p>
             </div>
-            <div className="text-center p-3 bg-ivory-50 rounded-2xl shadow-neumorphic-out-sm">
+            <div className="text-center p-3 bg-background rounded-2xl shadow-soft">
               <div className="text-xl mb-1">⚡</div>
-              <p className="text-xs font-medium text-sage-800">Tăng năng lượng</p>
+              <p className="text-xs font-medium text-foreground">Tăng năng lượng</p>
             </div>
           </div>
         </Card>
       </div>
 
       {/* Fixed Start Button */}
-      <div className="fixed bottom-0 left-0 right-0 p-3 bg-ivory-50/80 backdrop-blur-sm border-t border-sage-200/50 z-50">
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-background/80 backdrop-blur-sm border-t border-border/50 z-50">
         <Button
           onClick={handleStartWorkout}
-          variant="ghost"
-          className="w-full bg-sage-500 text-ivory-50 font-medium py-3 text-base rounded-2xl shadow-lg hover:bg-sage-600 active:scale-95 transition-all"
+          className="w-full bg-primary text-primary-foreground font-medium py-3 text-base rounded-2xl shadow-lg hover:bg-primary/90 active:scale-95 transition-all"
         >
           <Play size={16} className="mr-2" />
           Bắt đầu tập

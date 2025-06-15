@@ -3,69 +3,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* An Lành Design System - Material 3 Inspired */
+/* Organic Minimalism Design System */
 
 @layer base {
   :root {
-    --background: 84 22% 96%; /* Lighter sage-100 for better contrast */
-    --foreground: 210 11% 15%; /* charcoal gray */
+    --background: 61 93% 91%; /* organic-yellow-cream */
+    --foreground: 90 20% 15%; /* Dark, earthy green */
 
-    --card: 60 9% 99%; /* ivory-50 but almost white */
-    --card-foreground: 210 11% 15%;
+    --card: 61 93% 94%; /* Slightly brighter cream */
+    --card-foreground: 90 20% 15%;
 
-    --popover: 60 9% 99%;
-    --popover-foreground: 210 11% 15%;
+    --popover: 61 93% 94%;
+    --popover-foreground: 90 20% 15%;
 
-    --primary: 84 30% 50%; /* A bit more saturated sage for primary actions */
-    --primary-foreground: 60 9% 98%;
+    --primary: 88 52% 42%; /* organic-green */
+    --primary-foreground: 61 80% 96%; /* Very light cream for contrast */
 
-    --secondary: 84 22% 90%; /* sage-200 - Tonal secondary */
-    --secondary-foreground: 84 22% 30%; /* sage-800 */
+    --secondary: 85 38% 65%; /* organic-green-light, adjusted for softness */
+    --secondary-foreground: 90 20% 15%;
 
-    --muted: 84 22% 94%; /* sage-100 - for subtle backgrounds */
-    --muted-foreground: 84 15% 55%;
+    --muted: 55 70% 88%; /* organic-yellow-soft */
+    --muted-foreground: 90 15% 40%;
 
-    --accent: 39 77% 64%; /* sandy-300 */
-    --accent-foreground: 210 11% 15%;
+    --accent: 45 91% 57%; /* organic-yellow */
+    --accent-foreground: 90 20% 15%;
 
-    --destructive: 0 72% 51%; /* Adjusted for better visibility */
-    --destructive-foreground: 60 9% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 84 22% 88%; /* sage-200, slightly darker for definition */
-    --input: 84 22% 88%; /* sage-200, slightly darker */
-    --ring: 84 30% 50%; /* primary */
+    --border: 85 30% 85%; /* Soft green border */
+    --input: 85 30% 85%;
+    --ring: 88 52% 42%;
 
-    --radius: 16px; /* M3 uses more rounded corners */
+    --radius: 20px;
   }
 
   .dark {
-    --background: 84 10% 15%; /* Darker, less saturated sage */
-    --foreground: 60 9% 98%;
+    --background: 90 10% 12%; /* Dark, desaturated green */
+    --foreground: 61 80% 92%; /* Light cream */
 
-    --card: 84 10% 20%; /* Slightly lighter than background */
-    --card-foreground: 60 9% 98%;
+    --card: 90 10% 16%;
+    --card-foreground: 61 80% 92%;
 
-    --popover: 84 10% 20%;
-    --popover-foreground: 60 9% 98%;
+    --popover: 90 10% 16%;
+    --popover-foreground: 61 80% 92%;
 
-    --primary: 84 25% 55%; /* Lighter sage for dark mode */
-    --primary-foreground: 210 11% 15%;
+    --primary: 88 45% 58%; /* Lighter green for dark mode */
+    --primary-foreground: 90 20% 10%;
 
-    --secondary: 84 10% 25%;
-    --secondary-foreground: 60 9% 98%;
+    --secondary: 85 15% 22%;
+    --secondary-foreground: 61 80% 92%;
 
-    --muted: 84 10% 20%;
-    --muted-foreground: 84 15% 65%;
+    --muted: 85 15% 18%;
+    --muted-foreground: 61 30% 75%;
 
-    --accent: 39 77% 64%;
-    --accent-foreground: 60 9% 98%;
+    --accent: 45 85% 65%; /* Brighter yellow for dark mode */
+    --accent-foreground: 90 20% 10%;
 
-    --destructive: 0 63% 40%;
-    --destructive-foreground: 60 9% 98%;
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 84 10% 30%;
-    --input: 84 10% 30%;
-    --ring: 84 25% 55%;
+    --border: 85 10% 25%;
+    --input: 85 10% 25%;
+    --ring: 88 45% 58%;
   }
 }
 

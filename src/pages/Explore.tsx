@@ -98,26 +98,26 @@ const Explore = () => {
         return (
           <div className="space-y-4">
             {programs.map((program, index) => (
-              <Card key={index} className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <Card key={index} className="p-5 bg-card shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start space-x-4">
                   <div className="text-3xl">{program.image}</div>
                   <div className="flex-1">
-                    <h3 className="font-serif font-bold text-sage-800 mb-2">{program.title}</h3>
-                    <p className="text-sm text-sage-600 mb-3">{program.description}</p>
+                    <h3 className="font-serif font-bold text-foreground mb-2">{program.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{program.description}</p>
                     <div className="flex items-center space-x-4 mb-3">
-                      <Badge variant="secondary" className="bg-sage-100 text-sage-700">
+                      <Badge variant="secondary">
                         📅 {program.duration}
                       </Badge>
-                      <Badge variant="secondary" className="bg-sandy-100 text-sandy-700">
+                      <Badge variant="secondary">
                         📊 {program.level}
                       </Badge>
-                      <Badge variant="secondary" className="bg-coral-100 text-coral-700">
+                      <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
                         🎯 {program.sessions} buổi
                       </Badge>
                     </div>
                     <Button 
                       onClick={handleStartWorkout}
-                      className="w-full gradient-sage text-white rounded-xl"
+                      className="w-full bg-primary text-primary-foreground rounded-xl"
                     >
                       Bắt đầu lộ trình
                     </Button>
@@ -132,21 +132,21 @@ const Explore = () => {
         return (
           <div className="space-y-4">
             {challenges.map((challenge, index) => (
-              <Card key={index} className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <Card key={index} className="p-5 bg-card shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-start space-x-4">
                   <div className="text-3xl">{challenge.image}</div>
                   <div className="flex-1">
-                    <h3 className="font-serif font-bold text-sage-800 mb-2">{challenge.title}</h3>
-                    <p className="text-sm text-sage-600 mb-3">{challenge.description}</p>
+                    <h3 className="font-serif font-bold text-foreground mb-2">{challenge.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{challenge.description}</p>
                     <div className="flex items-center space-x-4 mb-3">
-                      <Badge variant="secondary" className="bg-sage-100 text-sage-700">
+                      <Badge variant="secondary">
                         👥 {challenge.participants} người tham gia
                       </Badge>
-                      <Badge variant="secondary" className="bg-coral-100 text-coral-700">
+                      <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
                         🏆 {challenge.reward}
                       </Badge>
                     </div>
-                    <Button className="w-full gradient-coral text-white rounded-xl">
+                    <Button className="w-full bg-accent text-accent-foreground rounded-xl">
                       Tham gia thử thách
                     </Button>
                   </div>
@@ -160,13 +160,13 @@ const Explore = () => {
         return (
           <div className="grid grid-cols-1 gap-4">
             {poses.map((pose, index) => (
-              <Card key={index} className="p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <Card key={index} className="p-4 bg-card shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center space-x-4">
                   <div className="text-2xl">{pose.image}</div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-sage-800">{pose.name}</h3>
-                    <p className="text-sm text-sage-600 italic">{pose.sanskrit}</p>
-                    <Badge variant="secondary" className="bg-sage-100 text-sage-700 text-xs mt-1">
+                    <h3 className="font-semibold text-foreground">{pose.name}</h3>
+                    <p className="text-sm text-muted-foreground italic">{pose.sanskrit}</p>
+                    <Badge variant="secondary" className="text-xs mt-1">
                       {pose.level}
                     </Badge>
                   </div>
@@ -180,21 +180,21 @@ const Explore = () => {
         return (
           <div className="grid grid-cols-1 gap-4">
             {meditations.map((meditation, index) => (
-              <Card key={index} className="p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+              <Card key={index} className="p-4 bg-card shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center space-x-4">
                   <div className="text-2xl">{meditation.image}</div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-sage-800">{meditation.title}</h3>
+                    <h3 className="font-semibold text-foreground">{meditation.title}</h3>
                     <div className="flex items-center space-x-2 mt-1">
-                      <Badge variant="secondary" className="bg-sage-100 text-sage-700 text-xs">
+                      <Badge variant="secondary" className="text-xs">
                         ⏱️ {meditation.duration}
                       </Badge>
-                      <Badge variant="secondary" className="bg-sandy-100 text-sandy-700 text-xs">
+                      <Badge variant="secondary" className="bg-accent/20 text-accent-foreground text-xs">
                         {meditation.type}
                       </Badge>
                     </div>
                   </div>
-                  <Button size="sm" className="gradient-sage text-white rounded-lg">
+                  <Button size="sm" className="bg-primary text-primary-foreground rounded-lg">
                     Bắt đầu
                   </Button>
                 </div>
@@ -209,20 +209,20 @@ const Explore = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivory-50 pb-20">
+    <div className="min-h-screen bg-background pb-20">
       <div className="p-6">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-2xl font-serif font-bold text-sage-800 mb-4">Khám phá</h1>
+          <h1 className="text-2xl font-serif font-bold text-foreground mb-4">Khám phá</h1>
           
           {/* Search Bar */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sage-400" size={20} />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
             <Input
               placeholder="Tìm kiếm bài tập, tư thế..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white border-sage-200 rounded-xl"
+              className="pl-10 bg-card border-border rounded-xl"
             />
           </div>
         </div>
@@ -236,8 +236,8 @@ const Explore = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`whitespace-nowrap rounded-xl ${
                 activeTab === tab.id
-                  ? 'gradient-sage text-white'
-                  : 'border-sage-200 text-sage-600 hover:bg-sage-50'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:bg-muted'
               }`}
             >
               {tab.label}

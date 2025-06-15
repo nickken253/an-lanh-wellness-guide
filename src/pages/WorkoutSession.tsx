@@ -106,25 +106,25 @@ const WorkoutSession = () => {
 
   if (isResting) {
     return (
-      <div className="min-h-screen bg-ivory-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="text-center max-w-xs mx-auto w-full">
-          <div className="text-6xl font-bold text-sage-800 mb-3">
+          <div className="text-6xl font-bold text-foreground mb-3">
             {timeRemaining}
           </div>
-          <h2 className="text-xl font-serif font-bold text-sage-800 mb-3">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-3">
             Nghỉ ngơi
           </h2>
-          <p className="text-sage-600 mb-6 text-sm">Chuẩn bị cho động tác tiếp theo</p>
+          <p className="text-muted-foreground mb-6 text-sm">Chuẩn bị cho động tác tiếp theo</p>
           
-          <Card className="p-4 bg-white shadow-lg rounded-xl mb-4">
+          <Card className="p-4 bg-card shadow-lg rounded-xl mb-4">
             <div className="text-3xl mb-2">{poses[currentPose].image}</div>
-            <h3 className="text-sm font-semibold text-sage-800 mb-1">Động tác tiếp theo</h3>
-            <p className="text-xs text-sage-600">{poses[currentPose].name}</p>
+            <h3 className="text-sm font-semibold text-foreground mb-1">Động tác tiếp theo</h3>
+            <p className="text-xs text-muted-foreground">{poses[currentPose].name}</p>
           </Card>
 
           <Button
             onClick={handleSkipRest}
-            className="w-full gradient-sage text-white font-medium py-2.5 text-sm rounded-xl"
+            className="w-full bg-primary text-primary-foreground font-medium py-2.5 text-sm rounded-xl"
           >
             Tập luôn
           </Button>
@@ -134,14 +134,14 @@ const WorkoutSession = () => {
   }
 
   return (
-    <div className="min-h-screen bg-ivory-50 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Top Bar */}
-      <div className="p-3 bg-white shadow-sm flex-shrink-0">
+      <div className="p-3 bg-card shadow-sm flex-shrink-0">
         <div className="flex items-center justify-between mb-2">
-          <h1 className="text-sm font-serif font-bold text-sage-800 flex-1 truncate">
+          <h1 className="text-sm font-serif font-bold text-foreground flex-1 truncate">
             Bài tập {currentPose + 1}/{totalPoses}
           </h1>
-          <div className="text-lg font-bold text-sage-800 ml-2">
+          <div className="text-lg font-bold text-foreground ml-2">
             {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
           </div>
         </div>
@@ -151,23 +151,23 @@ const WorkoutSession = () => {
       {/* Main Content Area */}
       <div className="flex-grow flex flex-col p-3 gap-3">
         {/* Instructor View */}
-        <div className="flex-1 bg-gradient-to-br from-sage-200 to-sage-300 rounded-xl overflow-hidden relative flex items-center justify-center">
+        <div className="flex-1 bg-secondary/30 rounded-xl overflow-hidden relative flex items-center justify-center">
             <div className="absolute top-2 left-2 bg-black/20 text-white text-xs px-2 py-0.5 rounded-full backdrop-blur-sm">Động tác mẫu</div>
             <div className="text-center">
                 <div className="text-5xl mb-2">{poses[currentPose].image}</div>
-                <h3 className="font-semibold text-sage-800">{poses[currentPose].name}</h3>
-                <p className="text-xs text-sage-600 italic mt-1">{poses[currentPose].sanskrit}</p>
+                <h3 className="font-semibold text-foreground">{poses[currentPose].name}</h3>
+                <p className="text-xs text-muted-foreground italic mt-1">{poses[currentPose].sanskrit}</p>
             </div>
         </div>
 
         {/* User Camera View */}
-        <div className="flex-1 bg-gray-300 rounded-xl overflow-hidden relative flex items-center justify-center">
+        <div className="flex-1 bg-muted/50 rounded-xl overflow-hidden relative flex items-center justify-center">
             <div className="absolute top-2 left-2 bg-black/20 text-white text-xs px-2 py-0.5 rounded-full backdrop-blur-sm">Camera của bạn</div>
-            <div className="w-24 h-36 border-2 border-sage-600 border-dashed rounded-full opacity-30"></div>
+            <div className="w-24 h-36 border-2 border-foreground/20 border-dashed rounded-full opacity-30"></div>
             {aiMessage && (
                 <div className="absolute bottom-3 left-3 right-3">
-                    <Card className="p-2.5 bg-sage-100/90 border-sage-300 animate-fade-in backdrop-blur-sm">
-                        <p className="text-sage-800 text-center text-sm font-medium">💬 {aiMessage}</p>
+                    <Card className="p-2.5 bg-card/90 border-border animate-fade-in backdrop-blur-sm">
+                        <p className="text-foreground text-center text-sm font-medium">💬 {aiMessage}</p>
                     </Card>
                 </div>
             )}
@@ -175,11 +175,11 @@ const WorkoutSession = () => {
       </div>
 
       {/* Controls */}
-      <div className="flex-shrink-0 p-4 bg-white border-t border-sage-200">
+      <div className="flex-shrink-0 p-4 bg-card border-t border-border">
         <div className="flex justify-center">
           <Button
             onClick={handlePause}
-            className="gradient-sage text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+            className="bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
           >
             <Pause size={24} />
           </Button>
@@ -189,15 +189,15 @@ const WorkoutSession = () => {
       {/* Pause Menu */}
       {showPauseMenu && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <Card className="w-full max-w-xs bg-white rounded-xl shadow-2xl p-4">
-            <h3 className="text-lg font-serif font-bold text-sage-800 mb-4 text-center">
+          <Card className="w-full max-w-xs bg-card rounded-xl shadow-2xl p-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-4 text-center">
               Tạm dừng
             </h3>
             
             <div className="space-y-2.5">
               <Button
                 onClick={handleResume}
-                className="w-full gradient-sage text-white py-2.5 rounded-lg text-sm"
+                className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg text-sm"
               >
                 <Play size={16} className="mr-2" />
                 Tiếp tục
@@ -205,15 +205,15 @@ const WorkoutSession = () => {
               
               <Button
                 variant="outline"
-                className="w-full border-sage-300 text-sage-700 py-2.5 rounded-lg text-sm"
+                className="w-full py-2.5 rounded-lg text-sm"
               >
                 Cài đặt
               </Button>
               
               <Button
                 onClick={handleStop}
-                variant="outline"
-                className="w-full border-coral-300 text-coral-600 py-2.5 rounded-lg text-sm"
+                variant="destructive"
+                className="w-full py-2.5 rounded-lg text-sm"
               >
                 Kết thúc buổi tập
               </Button>

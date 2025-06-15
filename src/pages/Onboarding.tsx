@@ -115,15 +115,15 @@ const Onboarding = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-ivory-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full gradient-sage flex items-center justify-center animate-pulse">
-            <span className="text-2xl text-white">🧘‍♀️</span>
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary flex items-center justify-center animate-pulse">
+            <span className="text-2xl text-primary-foreground">🧘‍♀️</span>
           </div>
-          <h2 className="text-2xl font-serif font-bold text-sage-800 mb-4">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
             Đang tạo lộ trình cho bạn...
           </h2>
-          <p className="text-sage-600 mb-6">AI Coach đang phân tích và thiết kế chương trình tập luyện cá nhân</p>
+          <p className="text-muted-foreground mb-6">AI Coach đang phân tích và thiết kế chương trình tập luyện cá nhân</p>
           <div className="w-64 mx-auto">
             <Progress value={75} className="h-2" />
           </div>
@@ -133,7 +133,7 @@ const Onboarding = () => {
   }
 
   return (
-    <div className="min-h-screen bg-ivory-50 p-4">
+    <div className="min-h-screen bg-background p-4">
       <div className="max-w-md mx-auto">
         {/* Header */}
         <div className="mb-8 pt-4">
@@ -142,20 +142,20 @@ const Onboarding = () => {
               variant="ghost"
               onClick={handleBack}
               disabled={currentStep === 0}
-              className="text-sage-600 hover:text-sage-800"
+              className="text-muted-foreground hover:text-foreground"
             >
               ← Quay lại
             </Button>
-            <span className="text-sm text-sage-600 font-medium">
+            <span className="text-sm text-muted-foreground font-medium">
               {currentStep + 1}/{steps.length}
             </span>
           </div>
           <Progress value={progress} className="h-2 mb-6" />
           
-          <h1 className="text-2xl font-serif font-bold text-sage-800 mb-2">
+          <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
             {currentStepData.title}
           </h1>
-          <p className="text-sage-600">
+          <p className="text-muted-foreground">
             {currentStepData.subtitle}
           </p>
         </div>
@@ -168,21 +168,21 @@ const Onboarding = () => {
                 key={option.id}
                 className={`p-4 cursor-pointer transition-all duration-200 border-2 min-h-[80px] ${
                   isOptionSelected(option.id)
-                    ? 'border-sage-500 bg-sage-50 shadow-md'
-                    : 'border-sage-200 bg-white hover:border-sage-300 hover:shadow-sm'
+                    ? 'border-primary bg-primary/10 shadow-md'
+                    : 'border-border bg-card hover:border-primary/50 hover:shadow-sm'
                 }`}
                 onClick={() => handleOptionSelect(option.id)}
               >
                 <div className="flex items-start space-x-3 h-full">
                   <span className="text-2xl flex-shrink-0">{option.icon}</span>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-sage-800 mb-1">{option.label}</h3>
-                    <p className="text-sm text-sage-600">{option.description}</p>
+                    <h3 className="font-semibold text-foreground mb-1">{option.label}</h3>
+                    <p className="text-sm text-muted-foreground">{option.description}</p>
                   </div>
                   <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
                     {isOptionSelected(option.id) && (
-                      <div className="w-6 h-6 rounded-full gradient-sage flex items-center justify-center">
-                        <span className="text-white text-sm">✓</span>
+                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                        <span className="text-primary-foreground text-sm">✓</span>
                       </div>
                     )}
                   </div>
@@ -196,7 +196,7 @@ const Onboarding = () => {
         <Button
           onClick={handleNext}
           disabled={!canProceed()}
-          className="w-full gradient-sage text-white font-medium py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-primary text-primary-foreground font-medium py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {currentStep === steps.length - 1 ? 'Hoàn tất' : 'Tiếp tục'}
         </Button>

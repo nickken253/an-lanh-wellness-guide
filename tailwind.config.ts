@@ -19,6 +19,8 @@ export default {
 		},
 		extend: {
 			boxShadow: {
+				'soft': '0 4px 12px 0 rgba(0, 0, 0, 0.07)',
+        'soft-in': 'inset 0 2px 8px 0 rgba(0, 0, 0, 0.06)',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -64,7 +66,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// An Lành brand colors
+				// Organic Minimalism brand colors
+				'organic-green': {
+					DEFAULT: '#72A534',
+					light: '#99BF71',
+				},
+				'organic-yellow': {
+					DEFAULT: '#F4C430',
+					soft: '#F4EC96',
+					cream: '#FDFFCF',
+				},
+				// An Lành brand colors (keeping for reference, but new theme is active)
 				sage: {
 					50: '#f6f7f4',
 					100: '#e9ebe3',
