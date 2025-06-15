@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import BottomNavigation from '@/components/BottomNavigation';
 import { useNavigate } from 'react-router-dom';
+import { SettingsDialog } from '@/components/SettingsDialog';
+import { UserRoundCog } from 'lucide-react';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -31,7 +33,6 @@ const Profile = () => {
   ];
 
   const menuItems = [
-    { icon: '⚙️', label: 'Cài đặt tài khoản', action: () => console.log('Settings') },
     { icon: '🔔', label: 'Thông báo', action: () => console.log('Notifications') },
     { icon: '💡', label: 'Mẹo tập luyện', action: () => console.log('Tips') },
     { icon: '📞', label: 'Hỗ trợ', action: () => console.log('Support') },
@@ -147,6 +148,16 @@ const Profile = () => {
         {/* Menu Items */}
         <Card className="p-2 rounded-3xl shadow-md">
           <div className="space-y-1">
+            <SettingsDialog>
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-left p-3 h-auto hover:bg-secondary rounded-2xl"
+              >
+                <UserRoundCog className="w-5 h-5 mr-3" />
+                <span className="text-foreground">Cài đặt tài khoản</span>
+              </Button>
+            </SettingsDialog>
+            
             {menuItems.map((item, index) => (
               <Button
                 key={index}

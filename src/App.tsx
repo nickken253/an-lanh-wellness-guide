@@ -15,30 +15,33 @@ import WorkoutSetup from "./pages/WorkoutSetup";
 import WorkoutSession from "./pages/WorkoutSession";
 import WorkoutSummary from "./pages/WorkoutSummary";
 import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/workout-details" element={<WorkoutDetails />} />
-          <Route path="/workout-setup" element={<WorkoutSetup />} />
-          <Route path="/workout-session" element={<WorkoutSession />} />
-          <Route path="/workout-summary" element={<WorkoutSummary />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/workout-details" element={<WorkoutDetails />} />
+            <Route path="/workout-setup" element={<WorkoutSetup />} />
+            <Route path="/workout-session" element={<WorkoutSession />} />
+            <Route path="/workout-summary" element={<WorkoutSummary />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
